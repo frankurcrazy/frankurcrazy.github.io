@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /vendors/
+Disallow: /fancybox/
+Allow: /
+Allow: /archives/
+Allow: /tags/
+Allow: /about/
+Sitemap: https://frankchang.me/sitemap.xml

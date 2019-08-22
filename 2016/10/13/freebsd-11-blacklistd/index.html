@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '複製',
+      copy_success: '複製成功',
+      copy_failure: '複製失敗'
+    }
+  };
+</script>
+
+  <meta name="description" content="在最近發布的 FreeBSD 11.0-Release 多了一個新功能 - blacklistd，這個功能最早是設計在 NetBSD 7 中，用來阻擋暴力破解 (Brute-force) 或者阻斷服務 (Denial of Service) 等攻擊。blacklistd 提供了一個界面讓服務 daemon 遭遇攻擊時能夠發出通知，當攻擊次數達到某個自訂的門檻之後，blacklistd 能夠搭配防火">
+<meta name="keywords" content="FreeBSD,blacklistd,NetBSD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FreeBSD 11 新功能 - blacklistd">
+<meta property="og:url" content="https://frankurcrazy.github.com/2016/10/13/freebsd-11-blacklistd/index.html">
+<meta property="og:site_name" content="&#x2F;home&#x2F;frank">
+<meta property="og:description" content="在最近發布的 FreeBSD 11.0-Release 多了一個新功能 - blacklistd，這個功能最早是設計在 NetBSD 7 中，用來阻擋暴力破解 (Brute-force) 或者阻斷服務 (Denial of Service) 等攻擊。blacklistd 提供了一個界面讓服務 daemon 遭遇攻擊時能夠發出通知，當攻擊次數達到某個自訂的門檻之後，blacklistd 能夠搭配防火">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://frankurcrazy.github.com/2016/10/13/freebsd-11-blacklistd/images/freebsd-sticker.jpg">
+<meta property="og:updated_time" content="2019-08-22T05:40:27.321Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FreeBSD 11 新功能 - blacklistd">
+<meta name="twitter:description" content="在最近發布的 FreeBSD 11.0-Release 多了一個新功能 - blacklistd，這個功能最早是設計在 NetBSD 7 中，用來阻擋暴力破解 (Brute-force) 或者阻斷服務 (Denial of Service) 等攻擊。blacklistd 提供了一個界面讓服務 daemon 遭遇攻擊時能夠發出通知，當攻擊次數達到某個自訂的門檻之後，blacklistd 能夠搭配防火">
+<meta name="twitter:image" content="https://frankurcrazy.github.com/2016/10/13/freebsd-11-blacklistd/images/freebsd-sticker.jpg">
+  <link rel="canonical" href="https://frankurcrazy.github.com/2016/10/13/freebsd-11-blacklistd/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>FreeBSD 11 新功能 - blacklistd | /home/frank</title>
+  <meta name="generator" content="Hexo 3.8.0">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">/home/frank</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切換導航欄">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首頁</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>歸檔</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://frankurcrazy.github.com/2016/10/13/freebsd-11-blacklistd/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Chang">
+      <meta itemprop="description" content="home directory of frank">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="/home/frank">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">FreeBSD 11 新功能 - blacklistd
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              
+                
+              
+
+              <time title="創建時間：2016-10-13 01:28:55" itemprop="dateCreated datePublished" datetime="2016-10-13T01:28:55+08:00">2016-10-13</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-08-22 13:40:27" itemprop="dateModified" datetime="2019-08-22T13:40:27+08:00">2019-08-22</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/FreeBSD/" itemprop="url" rel="index"><span itemprop="name">FreeBSD</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/FreeBSD/blacklistd/" itemprop="url" rel="index"><span itemprop="name">blacklistd</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">文章字數：</span>
+              
+              <span>0</span>
+            </span>
+          
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              
+              <span>0:01</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <div class="post-gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
+            <div class="post-gallery-row">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/images/freebsd-sticker.jpg" itemprop="contentUrl">
+            
+          
+
+          </div>
+        </div>
+        <p>在最近發布的 FreeBSD 11.0-Release 多了一個新功能 - <em>blacklistd</em>，這個功能最早是設計在 NetBSD 7 中，用來阻擋暴力破解 (Brute-force) 或者阻斷服務 (Denial of Service) 等攻擊。blacklistd 提供了一個界面讓服務 daemon 遭遇攻擊時能夠發出通知，當攻擊次數達到某個自訂的門檻之後，blacklistd 能夠搭配防火牆來阻斷惡意攻擊。</p>
+<a id="more"></a>
+<h1 id="什麼是-blacklistd？"><a href="#什麼是-blacklistd？" class="headerlink" title="什麼是 blacklistd？"></a>什麼是 blacklistd？</h1><h2 id="組成"><a href="#組成" class="headerlink" title="組成"></a>組成</h2><p>blacklistd 包含了幾個部分</p>
+<ul>
+<li><strong>blacklistd</strong>: daemon，用來接收通知 (notification) 與執行指令</li>
+<li><strong>blacklistd.conf</strong>: blacklistd 的設定檔</li>
+<li><strong>libblacklist API</strong>: 用來與 blacklistd 進行連線以及發送通知</li>
+<li><strong>blacklistctl</strong>: 用來查詢 blacklistd 資料庫的工具</li>
+<li><strong>blacklistd-helper</strong>: 支援各種防火牆的 wrapper</li>
+</ul>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>blacklistd 啟動時會讀取 /etc/blacklistd.conf，這份設定檔包含了通知的比對條件，例如所使用的 Address/Port/Protocol 甚至是程序的 owner 等等，以及其管理規則，例如幾次攻擊之後進行阻擋、阻擋的時間多久等等，詳盡的規則將在後面補充。那讀取了規則之後，要怎麼偵測是否被攻擊呢？這部分就得要由各個服務自行實作，例如 sshd 在發生 authentication failure 的時候，就要向 blacklistd 送出通知，當然這時候在 blacklistd.conf 也會有針對 sshd 服務的設定，當 authentication failure 發生一定次數之後，該位址就會被阻擋。</p>
+<h2 id="比較"><a href="#比較" class="headerlink" title="比較"></a>比較</h2><p>其實 blacklistd 的功能相當類似於常用的動態防火牆規則管理工具，例如 [sshguard][]、[fail2ban][] 與 [denyhosts][] 等。上述工具都是透過 log parsing 來找出攻擊的來源並且加以阻擋，例如掃描 /var/log/auth.log，找出誰在短時間內反覆登入失敗，再對防火牆下指令進行阻擋，他們之間的差異大都只在於支援的服務種類 (支援哪些服務的 Log) 以及支援的防火牆類型。既然已經有這麼多現有的工具，何苦還要重來一次，發展另一套工具呢？我覺得比較合理的解釋有幾個；首先，許多種攻擊的行為在連線時服務本身就能夠察覺，不需要再透過分析 Log 來發現，但目前缺乏一個統一的介面讓各個服務能夠阻斷惡意攻擊。除此之外，Log 分析其實也有一些缺點，除了浪費 CPU 資源之外，還有可能遭受像 [Regex DoS][redos] 或者 [Log injection][log_inject] 這類的攻擊。更別說有些服務其實是相對安靜的，例如像 telnetd 就不會記錄登入失敗的訊息，另外還有常常被用來放大攻擊的 ntpd 或者 dns，這些服務就比較難透過 Log 的分析來阻斷攻擊，這部分 blacklistd 就有發揮的空間了，如果未來 blacklistd 被各個平台廣泛採納，或許大部分的服務都會將 blacklistd 作為標準的實作項目。<br>[sshguard]: <a href="http://www.sshguard.net" target="_blank" rel="noopener">http://www.sshguard.net</a> “SSHGuard”<br>[fail2ban]: <a href="http://www.fail2ban.org" target="_blank" rel="noopener">http://www.fail2ban.org</a> “Fail2Ban”<br>[denyhosts]: <a href="http://denyhosts.sourceforge.net/" target="_blank" rel="noopener">http://denyhosts.sourceforge.net/</a> “DenyHosts”<br>[redos]: <a href="https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS" target="_blank" rel="noopener">https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS</a> “ReDoS”<br>[log_inject]: <a href="https://owasp.org/index.php/Log_Injection" target="_blank" rel="noopener">https://owasp.org/index.php/Log_Injection</a> “Log Injection”</p>
+<h1 id="如何使用-blacklistd？"><a href="#如何使用-blacklistd？" class="headerlink" title="如何使用 blacklistd？"></a>如何使用 blacklistd？</h1><h2 id="編輯設定檔"><a href="#編輯設定檔" class="headerlink" title="編輯設定檔"></a>編輯設定檔</h2><h2 id="啟動服務"><a href="#啟動服務" class="headerlink" title="啟動服務"></a>啟動服務</h2><p>blacklistd 的啟動方式與其他的服務沒有差別，先在 <code>/etc/rc.conf</code> 中加入 <code>blacklistd_enable=&quot;YES&quot;</code>，接著啟動服務。</p>
+<pre><code>$ sudo sysrc blacklistd_enable=&quot;YES&quot;
+$ sudo service blacklistd start
+</code></pre><h2 id="查詢資料庫"><a href="#查詢資料庫" class="headerlink" title="查詢資料庫"></a>查詢資料庫</h2><p><strong>待續…</strong><br>[blacklistd_slide]: <a href="http://www.nycbug.org/event/10358/blacklistd.pdf" target="_blank" rel="noopener">http://www.nycbug.org/event/10358/blacklistd.pdf</a><br>[blacklistd_video]: <a href="https://www.youtube.com/watch?v=fuuf8G28mjs" target="_blank" rel="noopener">https://www.youtube.com/watch?v=fuuf8G28mjs</a></p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/FreeBSD/" rel="tag"># FreeBSD</a>
+            
+              <a href="/tags/blacklistd/" rel="tag"># blacklistd</a>
+            
+              <a href="/tags/NetBSD/" rel="tag"># NetBSD</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2016/10/12/my-new-blog-with-hexo/" rel="next" title="新窩落成">
+                  <i class="fa fa-chevron-left"></i> 新窩落成
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2016/10/17/stew-pork-with-apple-sidra/" rel="prev" title="蘋果西打燉肉">
+                  蘋果西打燉肉 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc">
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什麼是-blacklistd？"><span class="nav-number">1.</span> <span class="nav-text">什麼是 blacklistd？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#組成"><span class="nav-number">1.1.</span> <span class="nav-text">組成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程"><span class="nav-number">1.2.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比較"><span class="nav-number">1.3.</span> <span class="nav-text">比較</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何使用-blacklistd？"><span class="nav-number">2.</span> <span class="nav-text">如何使用 blacklistd？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#編輯設定檔"><span class="nav-number">2.1.</span> <span class="nav-text">編輯設定檔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#啟動服務"><span class="nav-number">2.2.</span> <span class="nav-text">啟動服務</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查詢資料庫"><span class="nav-number">2.3.</span> <span class="nav-text">查詢資料庫</span></a></li></ol></li></ol></div>
+          </div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Frank Chang</p>
+  <div class="site-description motion-element" itemprop="description">home directory of frank</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">標籤</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Chang</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="總字數">23k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">0:21</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v3.8.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/schemes/muse.js?v=7.3.0"></script>
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/post-details.js?v=7.3.0"></script>
+
+
+<script>!function(o){var i=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function c(t,e){var n=new Image,o=t.getAttribute("data-original");n.onload=function(){t.src=o,e&&e()},n.src=o}function n(){for(var t=0;t<i.length;t++)e=i[t],void 0,0<=(n=e.getBoundingClientRect()).top&&0<=n.left&&n.top<=(o.innerHeight||document.documentElement.clientHeight)&&c(i[t],function(){i.splice(t,t)});var e,n;console.log("trigger")}n(),o.addEventListener("scroll",function(){var t,e;t=n,e=o,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</html>
