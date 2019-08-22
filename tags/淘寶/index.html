@@ -4,9 +4,10 @@
 
 
 
-<html lang="zh-TW">
+<html class="theme-next muse use-motion" lang="zh-TW">
 <head>
   <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.8.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,30 +22,32 @@
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
-<script id="hexo-configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
     version: '7.3.0',
-    exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
     pangu: false,
     algolia: {
-      appID: '',
+      applicationID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
+    search: {
+      root: '/',
+      path: ''
+    },
+    tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '複製',
@@ -67,19 +70,13 @@
   <link rel="canonical" href="https://frankurcrazy.github.com/tags/淘寶/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: false,
-    isPage: false,
-    isArchive: false
   };
 </script>
 
   <title>標籤: 淘寶 | /home/frank</title>
-  <meta name="generator" content="Hexo 3.8.0">
   
 
 
@@ -117,14 +114,15 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
-  <div class="container use-motion">
+
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
 
-    <div>
+    <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">/home/frank</span>
@@ -143,33 +141,32 @@
 </div>
 
 
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-      
-      
-      
+    <ul id="menu" class="menu">
         
-        <li class="menu-item menu-item-home">
+        
+        
+          
+          <li class="menu-item menu-item-home">
       
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首頁</a>
 
   </li>
-      
-      
-      
         
-        <li class="menu-item menu-item-archives">
+        
+        
+          
+          <li class="menu-item menu-item-archives">
       
     
 
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>歸檔</a>
 
   </li>
-  </ul>
-
+    </ul>
     
 
     
@@ -185,13 +182,17 @@
   
 
 </nav>
+
 </div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content ">
+          <div id="content" class="content">
             
 
   
@@ -204,28 +205,16 @@
         <h1>淘寶<small>標籤</small>
         </h1>
       </div>
+        
 
-      
-
-  
-  
-  
-
-  
-    
-    <div class="collection-title">
-      <h1 class="archive-year" id="archive-year-2017">2017</h1>
-    </div>
-  
-  
-
-  <article class="post" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
       <h2 class="post-title">
-        
           <a class="post-title-link" href="/2017/05/02/Enable-Mellanox-Connect-X2-10G-NIC-in-FreeBSD-11/" itemprop="url">
-            <span itemprop="name">在 FreeBSD 11 中使用 Mellanox Connect-X2 (MNPA19-XTR) 10G 網卡</span>
+            
+              <span itemprop="name">在 FreeBSD 11 中使用 Mellanox Connect-X2 (MNPA19-XTR) 10G 網卡</span>
+            
           </a>
         
       </h2>
@@ -242,7 +231,7 @@
   </article>
 
 
-
+      
     </div>
 
   </div>
@@ -271,22 +260,9 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
+
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">Frank Chang</p>
   <div class="site-description motion-element" itemprop="description">home directory of frank</div>
@@ -499,19 +475,14 @@
 
 
 
-
-
-
-
         
       </div>
     </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
   </div>
 
@@ -519,33 +490,17 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
-<script src="/js/schemes/muse.js?v=7.3.0"></script>
-<script src="/js/next-boot.js?v=7.3.0"></script>
 
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/schemes/muse.js?v=7.3.0"></script>
 
 
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <script src="/js/next-boot.js?v=7.3.0"></script>
 
   
 
@@ -555,5 +510,41 @@
 
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
