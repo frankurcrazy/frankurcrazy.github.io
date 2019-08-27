@@ -283,7 +283,7 @@
                 
                   <span class="post-meta-item-text">更新於</span>
                 
-                <time title="修改時間：2019-08-22 13:40:27" itemprop="dateModified" datetime="2019-08-22T13:40:27+08:00">2019-08-22</time>
+                <time title="修改時間：2019-08-22 17:42:07" itemprop="dateModified" datetime="2019-08-22T17:42:07+08:00">2019-08-22</time>
               </span>
             
           
@@ -615,7 +615,7 @@
       
           <p>一條 TCP 連線的建立傳統上少不了的就是三相交握的過程，執行三項交握有許多優點，包括增加連線的可靠性、同時也允許連線的雙方協調連線的設定，例如是否使用 Window-scaling 等等，也能避免一些常見的攻擊模式，像是 IP Spoofing 或是被用來當作反射攻擊、放大攻擊的節點。但是三項交握同時也伴隨 overhead，這些成本在區域網路中因為延遲低 (小於 0.1ms) 並不明顯，但如果將場景搬到跨洲的網路時，這些成本就變得無法忽視。</p>
 <p>舉個例子，當你在利用 FTP 把 10000 個檔案從美國傳回台灣，因為 FTP 的特性會為每一個檔案建立一條新的連線。考慮美國到台灣的 RTT 大概是 200ms，每建立一個連線就要花掉 2*RTT 的時間，等於是 0.4 秒鐘，而這只是一個檔案。<em>10000 個檔案光連線建立就要花費 4000 秒</em>，一個多小時就這樣過去了，還不包括實際傳輸檔案的時間。要解決這樣的問題，一般來說就是盡量使用 persistent connection 或是口語一點的 long-lived connection，避免建立新的連線、重複使用舊的連線，事實上這種作法還有一個好處就是避免 TCP Slow-start，不用每條連線都等待 congestion window ramp-up。然而像 FTP 這種早就該放進博物館卻還是有一堆人在使用。</p>
-<p>另一個例子則是之前我有特別寫文章介紹的 <a href="https://frankchang.me/2018/04/02/DNS-over-HTTPS/" target="_blank" rel="noopener">DNS-over-HTTPS</a>，用 TCP 來做 DNS Server 就是典型的 short-lived connection 的例子，想像你要解個 domain 要至少花上 2*RTT 的時間 (當然這邊還有其他議題，例如 TLS Handshake 本身就要花上 2*RTT，當然有些解法，像是 TLS False-start 及 TLS 1.3 的 Session resumption，等哪天有空再補上)。為此 <a href="https://tools.ietf.org/html/rfc7413" target="_blank" rel="noopener">RFC 7413</a> 就在 TCP 中延伸了一個 Fastopen 的方法來加快連線建立的速度。</p>
+<p>另一個例子則是之前我有特別寫文章介紹的 <a href="https://frankchang.me/2018/04/02/DNS-over-HTTPS/">DNS-over-HTTPS</a>，用 TCP 來做 DNS Server 就是典型的 short-lived connection 的例子，想像你要解個 domain 要至少花上 2*RTT 的時間 (當然這邊還有其他議題，例如 TLS Handshake 本身就要花上 2*RTT，當然有些解法，像是 TLS False-start 及 TLS 1.3 的 Session resumption，等哪天有空再補上)。為此 <a href="https://tools.ietf.org/html/rfc7413" target="_blank" rel="noopener">RFC 7413</a> 就在 TCP 中延伸了一個 Fastopen 的方法來加快連線建立的速度。</p>
           <!--noindex-->
           
             <div class="post-button text-center">

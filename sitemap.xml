@@ -30,6 +30,13 @@
   </url>
   
   <url>
+    <loc>https://frankchang.me/2018/12/27/nginx-log-regex/</loc>
+    
+    <lastmod>2019-08-22T09:42:07.295Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://frankchang.me/2018/03/09/freebsd-nginx-full/</loc>
     
     <lastmod>2019-08-22T09:41:38.280Z</lastmod>
@@ -72,13 +79,6 @@
   </url>
   
   <url>
-    <loc>https://frankchang.me/2016/10/13/freebsd-11-blacklistd/</loc>
-    
-    <lastmod>2019-08-22T05:40:27.321Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://frankchang.me/2018/04/16/eip-999/</loc>
     
     <lastmod>2019-08-22T05:40:27.321Z</lastmod>
@@ -86,14 +86,14 @@
   </url>
   
   <url>
-    <loc>https://frankchang.me/2017/09/08/hinet-pppoe-ipv6-dual-stack/</loc>
+    <loc>https://frankchang.me/2016/10/13/freebsd-11-blacklistd/</loc>
     
     <lastmod>2019-08-22T05:40:27.321Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://frankchang.me/2018/12/27/nginx-log-regex/</loc>
+    <loc>https://frankchang.me/2017/09/08/hinet-pppoe-ipv6-dual-stack/</loc>
     
     <lastmod>2019-08-22T05:40:27.321Z</lastmod>
     
@@ -114,14 +114,14 @@
   </url>
   
   <url>
-    <loc>https://frankchang.me/2017/05/02/Enable-Mellanox-Connect-X2-10G-NIC-in-FreeBSD-11/</loc>
+    <loc>https://frankchang.me/2018/04/02/DNS-over-HTTPS/</loc>
     
     <lastmod>2019-08-22T05:40:27.317Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://frankchang.me/2018/04/02/DNS-over-HTTPS/</loc>
+    <loc>https://frankchang.me/2017/05/02/Enable-Mellanox-Connect-X2-10G-NIC-in-FreeBSD-11/</loc>
     
     <lastmod>2019-08-22T05:40:27.317Z</lastmod>
     
