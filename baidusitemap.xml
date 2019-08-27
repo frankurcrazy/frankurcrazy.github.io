@@ -2,48 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://frankchang.me/2018/07/27/tcp-fastopen/</loc>
-    <lastmod>2019-08-22T09:43:54.251Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2018/12/18/sim7000c/</loc>
-    <lastmod>2019-08-22T09:43:36.619Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2018/04/16/591-housing-api/</loc>
-    <lastmod>2019-08-22T09:42:47.699Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2018/02/08/cisco-unsupported-transceiver/</loc>
-    <lastmod>2019-08-22T09:42:20.855Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2018/12/27/nginx-log-regex/</loc>
-    <lastmod>2019-08-22T09:42:07.295Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2018/03/09/freebsd-nginx-full/</loc>
-    <lastmod>2019-08-22T09:41:38.280Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2016/10/17/stew-pork-with-apple-sidra/</loc>
-    <lastmod>2019-08-22T05:40:27.333Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2018/01/31/dpdk-mempool/</loc>
-    <lastmod>2019-08-22T05:40:27.321Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2018/04/16/eip-999/</loc>
-    <lastmod>2019-08-22T05:40:27.321Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2016/10/13/freebsd-11-blacklistd/</loc>
-    <lastmod>2019-08-22T05:40:27.321Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2017/09/08/hinet-pppoe-ipv6-dual-stack/</loc>
-    <lastmod>2019-08-22T05:40:27.321Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2016/10/12/my-new-blog-with-hexo/</loc>
-    <lastmod>2019-08-22T05:40:27.321Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2017/06/27/replace-virtualbox-pxe-rom/</loc>
-    <lastmod>2019-08-22T05:40:27.321Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2018/04/02/DNS-over-HTTPS/</loc>
-    <lastmod>2019-08-22T05:40:27.317Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2017/05/02/Enable-Mellanox-Connect-X2-10G-NIC-in-FreeBSD-11/</loc>
-    <lastmod>2019-08-22T05:40:27.317Z</lastmod>
+    <lastmod>2019-08-22</lastmod>
   </url>
 </urlset>
