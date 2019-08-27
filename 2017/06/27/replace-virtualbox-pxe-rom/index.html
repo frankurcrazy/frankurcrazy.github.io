@@ -297,7 +297,7 @@
               
                 <span class="post-meta-item-text">文章字數：</span>
               
-              <span title="文章字數">undefined</span>
+              <span title="文章字數">848</span>
             </span>
           
             <span class="post-meta-item">
@@ -307,7 +307,7 @@
               
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
               
-              <span title="所需閱讀時間">NaN:aN</span>
+              <span title="所需閱讀時間">1 分鐘</span>
             </span>
           
 
@@ -322,7 +322,9 @@
       
         <p>VirtualBox 中網路卡預設的 BootROM 是使用 iPXE，但是這個預設的 iPXE 只有少少的功能，例如在無碟開機所需要的 iSCSI 功能沒有編進去。當然我們可以利用 DHCP + TFTP 送 iPXE Image 做 PXE chainloading，但是實務上就會遇到一些問題，最主要是無法確定現在用的究竟是哪個 iPXE，因為 user-class 通通都是 “iPXE”。</p>
 <p>我的解決方案就是回歸使用 Intel PXE BootROM 這樣就能正常使用 PXE Chainloading 的功能導入功能完整的 iPXE。在 VirtualBox 的 Extension Pack 裡面就有提供 Intel 的 PXE BootROM。在安裝完 VirtualBox Extension Pack 之後，找找看 <code>/usr/local/lib</code> 或 <code>/lib</code> 有沒有 virtualbox 資料夾。我使用 Archlinux，就可以找到 <code>/lib/virtualbox/ExtensionPacks/Oracle_VM_VirtualBox_Extension_Pack</code> 這個目錄，在裡面有個 <code>PXE-Intel.rom</code> 檔案，這就是 Intel 的 PXE BootROM，接著我們要設定 Guest 的網卡改用這個 PXE Image 開機。</p>
-<p>設定的方式是透過 VBoxManage 這個指令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vboxmanage setextradata Diskless10 VBoxInternal/Devices/pcbios/0/Config/LanBootRom /lib/virtualbox/ExtensionPacks/Oracle_VM_VirtualBox_Extension_PackPXE-Intel.rom</span><br></pre></td></tr></table></figure><br>其中 <code>Diskless10</code> 是 Guest 的名稱，如果換成 <code>global</code> 那麼所有的 Guest 都會使用 Intel PXE BootROM。</p>
+<p>設定的方式是透過 VBoxManage 這個指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vboxmanage setextradata Diskless10 VBoxInternal/Devices/pcbios/0/Config/LanBootRom /lib/virtualbox/ExtensionPacks/Oracle_VM_VirtualBox_Extension_PackPXE-Intel.rom</span><br></pre></td></tr></table></figure>
+<p>其中 <code>Diskless10</code> 是 Guest 的名稱，如果換成 <code>global</code> 那麼所有的 Guest 都會使用 Intel PXE BootROM。</p>
 
     </div>
 
@@ -617,12 +619,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="總字數">NaNm</span>
+    <span title="總字數">23k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">NaN:aN</span>
+    <span title="所需總閱讀時間">21 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v3.9.0</div>
   <span class="post-meta-divider">|</span>

@@ -297,7 +297,7 @@
               
                 <span class="post-meta-item-text">文章字數：</span>
               
-              <span title="文章字數">undefined</span>
+              <span title="文章字數">719</span>
             </span>
           
             <span class="post-meta-item">
@@ -307,7 +307,7 @@
               
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
               
-              <span title="所需閱讀時間">NaN:aN</span>
+              <span title="所需閱讀時間">1 分鐘</span>
             </span>
           
 
@@ -323,40 +323,39 @@
         <p>在我使用 DPDK 的經驗裡，要分配空間通常都是直接利用 <code>rte_pktmbuf_pool_create()</code> 函式來建立。這個函式會建立一個專門用於存放 packet buffer (<code>struct rte_mbuf</code>) 的儲存池。完整的函式 prototype 如下:</p>
 <a id="more"></a>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct rte_mempool* <span class="title">rte_pktmbuf_pool_create</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">const</span> <span class="keyword">char</span> *    name,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">unsigned</span>        n,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">unsigned</span>        cache_size,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">uint16_t</span>        priv_size,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">uint16_t</span>        data_room_size,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">int</span>             socket_id </span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span></span><br></pre></td></tr></table></figure>
+
 <table>
 <thead>
 <tr>
-<th style="text-align:right">參數名稱</th>
-<th style="text-align:left">說明 </th>
+<th align="right">參數名稱</th>
+<th align="left">說明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:right">name</td>
-<td style="text-align:left">儲存池的名稱，主要是除錯時使用</td>
+<tbody><tr>
+<td align="right">name</td>
+<td align="left">儲存池的名稱，主要是除錯時使用</td>
 </tr>
 <tr>
-<td style="text-align:right">n</td>
-<td style="text-align:left">儲存池的空間個數</td>
+<td align="right">n</td>
+<td align="left">儲存池的空間個數</td>
 </tr>
 <tr>
-<td style="text-align:right">cache_size</td>
-<td style="text-align:left">儲存池的 cache 大小，除了本身的儲存空間外，DPDK 會在每個 Core 上分配一個 cache 用來降低對 mempool 空間的存取，進而提昇效能。如果將其設為 0 則會關閉 cache。</td>
+<td align="right">cache_size</td>
+<td align="left">儲存池的 cache 大小，除了本身的儲存空間外，DPDK 會在每個 Core 上分配一個 cache 用來降低對 mempool 空間的存取，進而提昇效能。如果將其設為 0 則會關閉 cache。</td>
 </tr>
 <tr>
-<td style="text-align:right">priv_size</td>
-<td style="text-align:left">私人空間大小，如果想再 mempool 結構後面放一些自己的 metadata，就可以利用這個參數來分配</td>
+<td align="right">priv_size</td>
+<td align="left">私人空間大小，如果想再 mempool 結構後面放一些自己的 metadata，就可以利用這個參數來分配</td>
 </tr>
 <tr>
-<td style="text-align:right">data_room_size</td>
-<td style="text-align:left">每個 mbuf 的 data 段要分配多少空間</td>
+<td align="right">data_room_size</td>
+<td align="left">每個 mbuf 的 data 段要分配多少空間</td>
 </tr>
 <tr>
-<td style="text-align:right">socket_id</td>
-<td style="text-align:left">空間要配置在哪個 NUMA Node 的記憶體中，可以用 <code>SOCKET_ID_ANY</code> 表示任意放置。</td>
+<td align="right">socket_id</td>
+<td align="left">空間要配置在哪個 NUMA Node 的記憶體中，可以用 <code>SOCKET_ID_ANY</code> 表示任意放置。</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 
     </div>
 
@@ -649,12 +648,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="總字數">NaNm</span>
+    <span title="總字數">23k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">NaN:aN</span>
+    <span title="所需總閱讀時間">21 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v3.9.0</div>
   <span class="post-meta-divider">|</span>

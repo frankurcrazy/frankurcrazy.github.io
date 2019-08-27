@@ -57,18 +57,18 @@
   };
 </script>
 
-  <meta name="description" content="前鎮子申請了中華電信的 PPPoE IPv6 Dual Stack 服務，在我的 Linux Router 上只需要在 /etc/ppp/options 中加入/etc/ppp/option1+ipv6 ipv6cp-use-ipaddr 接著 poff/pon 之後就能夠正確取得 IPv6，router 也能夠正確連上 IPv6 網站，但麻煩的是中華電信只配了一段 prefix 64 的 sub">
+  <meta name="description" content="前鎮子申請了中華電信的 PPPoE IPv6 Dual Stack 服務，在我的 Linux Router 上只需要在 /etc/ppp/options 中加入  /etc/ppp/option1+ipv6 ipv6cp-use-ipaddr  接著 poff/pon 之後就能夠正確取得 IPv6，router 也能夠正確連上 IPv6 網站，但麻煩的是中華電信只配了一段 prefix 64 的">
 <meta name="keywords" content="hinet,pppoe,radvd,linux,dual stack,networking">
 <meta property="og:type" content="article">
 <meta property="og:title" content="中華電信 PPPoE IPv6 Dual Stack">
 <meta property="og:url" content="https://frankchang.me/2017/09/08/hinet-pppoe-ipv6-dual-stack/index.html">
 <meta property="og:site_name" content="&#x2F;home&#x2F;frank">
-<meta property="og:description" content="前鎮子申請了中華電信的 PPPoE IPv6 Dual Stack 服務，在我的 Linux Router 上只需要在 /etc/ppp/options 中加入/etc/ppp/option1+ipv6 ipv6cp-use-ipaddr 接著 poff/pon 之後就能夠正確取得 IPv6，router 也能夠正確連上 IPv6 網站，但麻煩的是中華電信只配了一段 prefix 64 的 sub">
+<meta property="og:description" content="前鎮子申請了中華電信的 PPPoE IPv6 Dual Stack 服務，在我的 Linux Router 上只需要在 /etc/ppp/options 中加入  /etc/ppp/option1+ipv6 ipv6cp-use-ipaddr  接著 poff/pon 之後就能夠正確取得 IPv6，router 也能夠正確連上 IPv6 網站，但麻煩的是中華電信只配了一段 prefix 64 的">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:updated_time" content="2019-08-22T05:40:27.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中華電信 PPPoE IPv6 Dual Stack">
-<meta name="twitter:description" content="前鎮子申請了中華電信的 PPPoE IPv6 Dual Stack 服務，在我的 Linux Router 上只需要在 /etc/ppp/options 中加入/etc/ppp/option1+ipv6 ipv6cp-use-ipaddr 接著 poff/pon 之後就能夠正確取得 IPv6，router 也能夠正確連上 IPv6 網站，但麻煩的是中華電信只配了一段 prefix 64 的 sub">
+<meta name="twitter:description" content="前鎮子申請了中華電信的 PPPoE IPv6 Dual Stack 服務，在我的 Linux Router 上只需要在 /etc/ppp/options 中加入  /etc/ppp/option1+ipv6 ipv6cp-use-ipaddr  接著 poff/pon 之後就能夠正確取得 IPv6，router 也能夠正確連上 IPv6 網站，但麻煩的是中華電信只配了一段 prefix 64 的">
   <link rel="canonical" href="https://frankchang.me/2017/09/08/hinet-pppoe-ipv6-dual-stack/">
 
 
@@ -319,7 +319,7 @@
               
                 <span class="post-meta-item-text">文章字數：</span>
               
-              <span title="文章字數">undefined</span>
+              <span title="文章字數">2.4k</span>
             </span>
           
             <span class="post-meta-item">
@@ -329,7 +329,7 @@
               
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
               
-              <span title="所需閱讀時間">NaN:aN</span>
+              <span title="所需閱讀時間">2 分鐘</span>
             </span>
           
 
@@ -342,13 +342,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>前鎮子申請了中華電信的 PPPoE IPv6 Dual Stack 服務，在我的 Linux Router 上只需要在 <code>/etc/ppp/options</code> 中加入<br><figure class="highlight plain"><figcaption><span>/etc/ppp/option</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ipv6 ipv6cp-use-ipaddr</span><br></pre></td></tr></table></figure></p>
+        <p>前鎮子申請了中華電信的 PPPoE IPv6 Dual Stack 服務，在我的 Linux Router 上只需要在 <code>/etc/ppp/options</code> 中加入 </p>
+<figure class="highlight plain"><figcaption><span>/etc/ppp/option</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ipv6 ipv6cp-use-ipaddr</span><br></pre></td></tr></table></figure>
+
 <p>接著 poff/pon 之後就能夠正確取得 IPv6，router 也能夠正確連上 IPv6 網站，但麻煩的是中華電信只配了一段 prefix 64 的 subnet，如果要把這段 IP 分配給其他台電腦使用，就要花費一些功夫。索性就把它寫成一個 script，並且讓它在連上 PPPoE 後自動執行。</p>
 <a id="more"></a>
+
 <p>在開始之前請先安裝 radvd，這個 daemon 用來在內網的 interface 上面發送 router advertisement，讓底下的電腦能夠進行 SLAAC。</p>
 <figure class="highlight bash"><figcaption><span>v6_dual_stack_pd.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">WANIF=ppp0</span><br><span class="line">LANIF=enp2s0</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">get_global_addr</span></span>() &#123;</span><br><span class="line">    IF=<span class="variable">$1</span></span><br><span class="line">    ip -6 addr show dev <span class="variable">$&#123;IF&#125;</span> | grep -i global | awk <span class="string">'&#123;print $2&#125;'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">get_prefix_addr</span></span>() &#123;</span><br><span class="line">    ADDR=<span class="variable">$1</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$ADDR</span> | awk -F <span class="string">":"</span> <span class="string">'&#123;print $1":"$2":"$3":"$4&#125;'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">flush_global_addr</span></span>() &#123;</span><br><span class="line">    IF=<span class="variable">$1</span></span><br><span class="line">    ip -6 addr flush dev <span class="variable">$IF</span> scope global</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">gen_radvd_conf</span></span>() &#123;</span><br><span class="line">IF=<span class="variable">$1</span></span><br><span class="line">PREFIX=<span class="variable">$2</span></span><br><span class="line">cat &lt;&lt;EOF</span><br><span class="line">interface <span class="variable">$&#123;IF&#125;</span> </span><br><span class="line">&#123;</span><br><span class="line">    AdvSendAdvert on;</span><br><span class="line">    prefix <span class="variable">$&#123;PREFIX&#125;</span>::/64</span><br><span class="line">    &#123;</span><br><span class="line">        AdvOnLink on;</span><br><span class="line">        AdvAutonomous on;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">EOF</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">WANADDR=$(get_global_addr <span class="variable">$WANIF</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$WANADDR</span>"</span> == <span class="string">""</span> ]; <span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"No WAN Address found. This script probably has already been executed."</span></span><br><span class="line">    <span class="built_in">exit</span> 1;</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">PREFIXADDR=$(get_prefix_addr <span class="variable">$WANADDR</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"WAN Global Addr:"</span> <span class="variable">$WANADDR</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Prefix:"</span> <span class="variable">$PREFIXADDR</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Disable the accept_ra on WANIF</span></span><br><span class="line">sysctl net.ipv6.conf.ppp0.accept_ra=0</span><br><span class="line"></span><br><span class="line"><span class="comment">## Delete the global address of wan interface</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Removing the global address of WAN interface and LAN interface"</span></span><br><span class="line">flush_global_addr <span class="variable">$&#123;WANIF&#125;</span></span><br><span class="line">flush_global_addr <span class="variable">$&#123;LANIF&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Deleting prefix route on WAN interface"</span></span><br><span class="line">ip -6 route del <span class="variable">$&#123;PREFIXADDR&#125;</span>::/64 dev <span class="variable">$&#123;WANIF&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Move the global address to LAN interface</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Adding back global address to LAN interface"</span></span><br><span class="line">ip -6 addr add <span class="variable">$&#123;PREFIXADDR&#125;</span>::FFFF/64 dev <span class="variable">$&#123;LANIF&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Generate radvd.conf for LAN interface</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Generate radvd.conf for LAN interface."</span></span><br><span class="line">gen_radvd_conf <span class="variable">$&#123;LANIF&#125;</span> <span class="variable">$&#123;PREFIXADDR&#125;</span> | tee /etc/radvd.conf</span><br><span class="line">systemctl restart radvd</span><br></pre></td></tr></table></figure>
+
 <p>將這隻 script 存下來之後加上執行權限 <code>chmod +x v6_dual_stack_pd.sh</code>，接著編輯 <code>/etc/network/interfaces</code>，把這隻 script 放到 post-up 就完成了。</p>
 <figure class="highlight plain"><figcaption><span>/etc/network/interfaces</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># DSL</span><br><span class="line">auto dsl-provider</span><br><span class="line">iface dsl-provider inet ppp </span><br><span class="line">pre-up /sbin/ifconfig enp1s0 up # line maintained by pppoeconf</span><br><span class="line">post-up /home/frank/v6_dual_stack_pd.sh</span><br><span class="line">provider dsl-provider</span><br></pre></td></tr></table></figure>
+
 <p>目前只有想到這個方法，如果有更好的方法拜託留言告訴我！ Orz</p>
 
     </div>
@@ -650,12 +655,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="總字數">NaNm</span>
+    <span title="總字數">23k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">NaN:aN</span>
+    <span title="所需總閱讀時間">21 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v3.9.0</div>
   <span class="post-meta-divider">|</span>

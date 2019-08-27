@@ -321,7 +321,7 @@
               
                 <span class="post-meta-item-text">文章字數：</span>
               
-              <span title="文章字數">undefined</span>
+              <span title="文章字數">2k</span>
             </span>
           
             <span class="post-meta-item">
@@ -331,7 +331,7 @@
               
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
               
-              <span title="所需閱讀時間">NaN:aN</span>
+              <span title="所需閱讀時間">2 分鐘</span>
             </span>
           
 
@@ -354,6 +354,7 @@
         </div>
         <p>在最近發布的 FreeBSD 11.0-Release 多了一個新功能 - <em>blacklistd</em>，這個功能最早是設計在 NetBSD 7 中，用來阻擋暴力破解 (Brute-force) 或者阻斷服務 (Denial of Service) 等攻擊。blacklistd 提供了一個界面讓服務 daemon 遭遇攻擊時能夠發出通知，當攻擊次數達到某個自訂的門檻之後，blacklistd 能夠搭配防火牆來阻斷惡意攻擊。</p>
 <a id="more"></a>
+
 <h1 id="什麼是-blacklistd？"><a href="#什麼是-blacklistd？" class="headerlink" title="什麼是 blacklistd？"></a>什麼是 blacklistd？</h1><h2 id="組成"><a href="#組成" class="headerlink" title="組成"></a>組成</h2><p>blacklistd 包含了幾個部分</p>
 <ul>
 <li><strong>blacklistd</strong>: daemon，用來接收通知 (notification) 與執行指令</li>
@@ -366,8 +367,7 @@
 <h2 id="比較"><a href="#比較" class="headerlink" title="比較"></a>比較</h2><p>其實 blacklistd 的功能相當類似於常用的動態防火牆規則管理工具，例如 [sshguard][]、[fail2ban][] 與 [denyhosts][] 等。上述工具都是透過 log parsing 來找出攻擊的來源並且加以阻擋，例如掃描 /var/log/auth.log，找出誰在短時間內反覆登入失敗，再對防火牆下指令進行阻擋，他們之間的差異大都只在於支援的服務種類 (支援哪些服務的 Log) 以及支援的防火牆類型。既然已經有這麼多現有的工具，何苦還要重來一次，發展另一套工具呢？我覺得比較合理的解釋有幾個；首先，許多種攻擊的行為在連線時服務本身就能夠察覺，不需要再透過分析 Log 來發現，但目前缺乏一個統一的介面讓各個服務能夠阻斷惡意攻擊。除此之外，Log 分析其實也有一些缺點，除了浪費 CPU 資源之外，還有可能遭受像 [Regex DoS][redos] 或者 [Log injection][log_inject] 這類的攻擊。更別說有些服務其實是相對安靜的，例如像 telnetd 就不會記錄登入失敗的訊息，另外還有常常被用來放大攻擊的 ntpd 或者 dns，這些服務就比較難透過 Log 的分析來阻斷攻擊，這部分 blacklistd 就有發揮的空間了，如果未來 blacklistd 被各個平台廣泛採納，或許大部分的服務都會將 blacklistd 作為標準的實作項目。<br>[sshguard]: <a href="http://www.sshguard.net" target="_blank" rel="noopener">http://www.sshguard.net</a> “SSHGuard”<br>[fail2ban]: <a href="http://www.fail2ban.org" target="_blank" rel="noopener">http://www.fail2ban.org</a> “Fail2Ban”<br>[denyhosts]: <a href="http://denyhosts.sourceforge.net/" target="_blank" rel="noopener">http://denyhosts.sourceforge.net/</a> “DenyHosts”<br>[redos]: <a href="https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS" target="_blank" rel="noopener">https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS</a> “ReDoS”<br>[log_inject]: <a href="https://owasp.org/index.php/Log_Injection" target="_blank" rel="noopener">https://owasp.org/index.php/Log_Injection</a> “Log Injection”</p>
 <h1 id="如何使用-blacklistd？"><a href="#如何使用-blacklistd？" class="headerlink" title="如何使用 blacklistd？"></a>如何使用 blacklistd？</h1><h2 id="編輯設定檔"><a href="#編輯設定檔" class="headerlink" title="編輯設定檔"></a>編輯設定檔</h2><h2 id="啟動服務"><a href="#啟動服務" class="headerlink" title="啟動服務"></a>啟動服務</h2><p>blacklistd 的啟動方式與其他的服務沒有差別，先在 <code>/etc/rc.conf</code> 中加入 <code>blacklistd_enable=&quot;YES&quot;</code>，接著啟動服務。</p>
 <pre><code>$ sudo sysrc blacklistd_enable=&quot;YES&quot;
-$ sudo service blacklistd start
-</code></pre><h2 id="查詢資料庫"><a href="#查詢資料庫" class="headerlink" title="查詢資料庫"></a>查詢資料庫</h2><p><strong>待續…</strong><br>[blacklistd_slide]: <a href="http://www.nycbug.org/event/10358/blacklistd.pdf" target="_blank" rel="noopener">http://www.nycbug.org/event/10358/blacklistd.pdf</a><br>[blacklistd_video]: <a href="https://www.youtube.com/watch?v=fuuf8G28mjs" target="_blank" rel="noopener">https://www.youtube.com/watch?v=fuuf8G28mjs</a></p>
+$ sudo service blacklistd start</code></pre><h2 id="查詢資料庫"><a href="#查詢資料庫" class="headerlink" title="查詢資料庫"></a>查詢資料庫</h2><p><strong>待續…</strong><br>[blacklistd_slide]: <a href="http://www.nycbug.org/event/10358/blacklistd.pdf" target="_blank" rel="noopener">http://www.nycbug.org/event/10358/blacklistd.pdf</a><br>[blacklistd_video]: <a href="https://www.youtube.com/watch?v=fuuf8G28mjs" target="_blank" rel="noopener">https://www.youtube.com/watch?v=fuuf8G28mjs</a></p>
 
     </div>
 
@@ -688,12 +688,12 @@ $ sudo service blacklistd start
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="總字數">NaNm</span>
+    <span title="總字數">23k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">NaN:aN</span>
+    <span title="所需總閱讀時間">21 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v3.9.0</div>
   <span class="post-meta-divider">|</span>

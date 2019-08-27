@@ -297,7 +297,7 @@
               
                 <span class="post-meta-item-text">文章字數：</span>
               
-              <span title="文章字數">undefined</span>
+              <span title="文章字數">1.1k</span>
             </span>
           
             <span class="post-meta-item">
@@ -307,7 +307,7 @@
               
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
               
-              <span title="所需閱讀時間">NaN:aN</span>
+              <span title="所需閱讀時間">1 分鐘</span>
             </span>
           
 
@@ -322,7 +322,11 @@
       
         <p>最近想分析 Nginx 的 Log，最後自己寫了一個 regex，記錄一下。在 IP 部分省麻煩沒有做任何驗證，IPv4 或 IPv6 皆可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?P&lt;ip&gt;[^\s]+)\s-\s(?P&lt;remote_user&gt;[^\s])\s\[(?P&lt;time_local&gt;[^]]*)\]\s\&quot;(?P&lt;request&gt;(?P&lt;method&gt;[A-Z]&#123;3,7&#125;)\s(?&lt;uri&gt;.*)\s(?&lt;http_version&gt;HTTP\/[^&quot;]+))\&quot;\s(?P&lt;status&gt;\d&#123;3&#125;)\s(?P&lt;body_bytes_sent&gt;\d+)\s\&quot;(?P&lt;referer&gt;[^\&quot;]*)\&quot;\s\&quot;(?P&lt;http_user_agent&gt;[^\&quot;]+)\&quot;\s\&quot;(?P&lt;http_x_forwarded_for&gt;[^\&quot;]+)\&quot;</span><br></pre></td></tr></table></figure>
-<p>這個正規表達式對應的是預設的 Nginx <code>main</code> log 格式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                  &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br></pre></td></tr></table></figure><br><a id="more"></a><br>Regex 中包含了對應的 Named capturing-group:</p>
+
+<p>這個正規表達式對應的是預設的 Nginx <code>main</code> log 格式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                  &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>Regex 中包含了對應的 Named capturing-group:</p>
 <ul>
 <li><code>ip</code>: 用戶 IP</li>
 <li><code>remote_user</code>: 使用者名稱</li>
@@ -626,12 +630,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="總字數">NaNm</span>
+    <span title="總字數">23k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">NaN:aN</span>
+    <span title="所需總閱讀時間">21 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v3.9.0</div>
   <span class="post-meta-divider">|</span>

@@ -312,7 +312,7 @@
               
                 <span class="post-meta-item-text">文章字數：</span>
               
-              <span title="文章字數">undefined</span>
+              <span title="文章字數">1k</span>
             </span>
           
             <span class="post-meta-item">
@@ -322,7 +322,7 @@
               
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
               
-              <span title="所需閱讀時間">NaN:aN</span>
+              <span title="所需閱讀時間">1 分鐘</span>
             </span>
           
 
@@ -336,10 +336,16 @@
 
       
         <p>如果有人想要買網管型 Switch，跑來問我該買哪一台比較適合，我一定唯一推薦買二手  Cisco Switch，不但功能多、穩定，而且最重要的，價格非常的實惠。以目前在沒屋頂的售價來說，一台 48 port 1Gbps C2960 只要 3000 元以內就搞定，你想要的 dhcp snooping, mac binding, vlan 一應俱全。如果你想要找基本的 L3 Switch，可以找看看 C3560e，帶兩個 10G X2 接口 (可以轉成 TwinGig 接四個 1G SFP)，價格約落在 4000 以內就有了，還支援 PoE。如果需要比較完整的 L3 功能可以考慮 C3560G/C3750G。目前全新的 D-Link 或是 TP-Link 用這樣的價格都買不到，而且界面也不好用。</p>
-<p>但是使用 Cisco 的設備會遇到一個麻煩，就是它會鎖 Mini-GBIC vendor code；因此如果插上第三方的 SFP/SFP+，該 port 就會直接進入 err-disabled 的狀態，完全無法使用。一般的作法是請對方燒 ID (掏寶上的廠商多半會配合)，另一種更簡單的方法就是直接在交換器上關閉這個檢查。<br><a id="more"></a></p>
+<p>但是使用 Cisco 的設備會遇到一個麻煩，就是它會鎖 Mini-GBIC vendor code；因此如果插上第三方的 SFP/SFP+，該 port 就會直接進入 err-disabled 的狀態，完全無法使用。一般的作法是請對方燒 ID (掏寶上的廠商多半會配合)，另一種更簡單的方法就是直接在交換器上關閉這個檢查。</p>
+<a id="more"></a>
+
 <p>插上第三方的 SFP 會出現的訊息:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Feb  8 04:58:18.482: %GBIC_SECURITY_CRYPT-4-VN_DATA_CRC_ERROR: GBIC in port Gi0/52 has bad crc</span><br><span class="line">Feb  8 04:58:18.482: %PM-4-ERR_DISABLE: gbic-invalid error detected on Gi0/52, putting Gi0/52 in err-disable state</span><br></pre></td></tr></table></figure></p>
-<p>關閉這個檢查步驟很簡單，只需要透過兩個指令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># service unsupported-transceiver</span><br></pre></td></tr></table></figure></p>
-<p>這是一個隱藏指令，所以不會自動補齊，打完會噴出一個如果因為使用第三方 bla bla，我們不負責 bla bla…，接著再下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># no errdisable detect cause gbic-invalid</span><br></pre></td></tr></table></figure></p>
+<p>關閉這個檢查步驟很簡單，只需要透過兩個指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># service unsupported-transceiver</span><br></pre></td></tr></table></figure>
+
+<p>這是一個隱藏指令，所以不會自動補齊，打完會噴出一個如果因為使用第三方 bla bla，我們不負責 bla bla…，接著再下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># no errdisable detect cause gbic-invalid</span><br></pre></td></tr></table></figure>
+
 <p>到這邊你就可以放心使用你的雜牌 SFP 啦！</p>
 <p>參考資料：</p>
 <ol>
@@ -646,12 +652,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="總字數">NaNm</span>
+    <span title="總字數">23k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">NaN:aN</span>
+    <span title="所需總閱讀時間">21 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v3.9.0</div>
   <span class="post-meta-divider">|</span>

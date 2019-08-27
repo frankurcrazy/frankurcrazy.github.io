@@ -312,7 +312,7 @@
               
                 <span class="post-meta-item-text">文章字數：</span>
               
-              <span title="文章字數">undefined</span>
+              <span title="文章字數">996</span>
             </span>
           
             <span class="post-meta-item">
@@ -322,7 +322,7 @@
               
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
               
-              <span title="所需閱讀時間">NaN:aN</span>
+              <span title="所需閱讀時間">1 分鐘</span>
             </span>
           
 
@@ -335,13 +335,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Nginx 1.12 加入了 Dynamic module 的功能，可以動態載入想要的功能。在 FreeBSD Package 中，預設的 nginx 不知道為何將 HTTP/2 的選項關掉了，因此要開啟 HTTP/2 只能選擇安裝 nginx-full。然而安裝完後卻會發現 nginx 開起來卻看不到熟悉的 “Welcome to nginx!” 畫面。<br>查了一下在 error.log 出現資訊<br><a id="more"></a></p>
+        <p>Nginx 1.12 加入了 Dynamic module 的功能，可以動態載入想要的功能。在 FreeBSD Package 中，預設的 nginx 不知道為何將 HTTP/2 的選項關掉了，因此要開啟 HTTP/2 只能選擇安裝 nginx-full。然而安裝完後卻會發現 nginx 開起來卻看不到熟悉的 “Welcome to nginx!” 畫面。<br>查了一下在 error.log 出現資訊</p>
+<a id="more"></a>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ngx_http_fastdfs_process_init pid=54913</span><br><span class="line">[2018-03-09 15:18:25] ERROR - file: ini_file_reader.c, line: 631, include file &quot;http.conf&quot; not exists, line: &quot;#include http.conf&quot;</span><br><span class="line">[2018-03-09 15:18:25] ERROR - file: /wrkdirs/usr/ports/www/nginx-full/work/fastdfs-nginx-module-5a8110f/src/common.c, line: 155, load conf file &quot;/usr/local/etc/fdfs/mod_fastdfs.conf&quot; fail, ret code: 2</span><br><span class="line">2018/03/09 15:18:25 [alert] 51701#100096: worker process 54913 exited with fatal code 2 and cannot be respawned</span><br></pre></td></tr></table></figure>
-<p>感覺罪魁禍首就是這個 fastdfs 的東西。稍微 google 之後找到以下的排除方式：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo touch /usr/<span class="built_in">local</span>/etc/fdfs/http.conf</span><br><span class="line">sudo sed -i -e <span class="string">'s/load_fdfs_parameters_from_tracker=true/load_fdfs_parameters_from_tracker=false/g'</span> \</span><br><span class="line">    /usr/<span class="built_in">local</span>/etc/fdfs/mod_fastdfs.conf</span><br></pre></td></tr></table></figure></p>
+
+<p>感覺罪魁禍首就是這個 fastdfs 的東西。稍微 google 之後找到以下的排除方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo touch /usr/<span class="built_in">local</span>/etc/fdfs/http.conf</span><br><span class="line">sudo sed -i -e <span class="string">'s/load_fdfs_parameters_from_tracker=true/load_fdfs_parameters_from_tracker=false/g'</span> \</span><br><span class="line">    /usr/<span class="built_in">local</span>/etc/fdfs/mod_fastdfs.conf</span><br></pre></td></tr></table></figure>
+
 <p>重新啟動 nginx，收工！</p>
 <p>參考資料：</p>
 <ol>
-<li><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?format=multiple&amp;id=224166" target="_blank" rel="noopener">FreeBSD Bugzilla 224166</a></li>
+<li><a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?format=multiple&id=224166" target="_blank" rel="noopener">FreeBSD Bugzilla 224166</a></li>
 </ol>
 
     </div>
@@ -637,12 +642,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="總字數">NaNm</span>
+    <span title="總字數">23k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">NaN:aN</span>
+    <span title="所需總閱讀時間">21 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v3.9.0</div>
   <span class="post-meta-divider">|</span>

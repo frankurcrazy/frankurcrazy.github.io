@@ -319,7 +319,7 @@
               
                 <span class="post-meta-item-text">文章字數：</span>
               
-              <span title="文章字數">undefined</span>
+              <span title="文章字數">2.2k</span>
             </span>
           
             <span class="post-meta-item">
@@ -329,7 +329,7 @@
               
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
               
-              <span title="所需閱讀時間">NaN:aN</span>
+              <span title="所需閱讀時間">2 分鐘</span>
             </span>
           
 
@@ -342,12 +342,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>最近在 Taobao 上找到一個相當不錯的東西: Mellanox Connect-X2 10G NIC (MNPA19-XTR)。<a href="https://item.taobao.com/item.htm?id=546382206714&amp;_u=t2dmg8j26111" target="_blank" rel="noopener">這張卡</a>在淘寶上的價格是 150 人民幣，換算成台幣之後 700 元有找，相較於 Intel x520 價格只要大概 1/10 不到，作為入門的 10G 網卡來說真的相當划算，我又挑了幾款 Cisco 的 SFP+ DAC 線之後，就交由集貨運來台灣。10G 網卡目前對我最重要的用途就是作為 iSCSI Storage 的介面卡，FreeBSD 搭配 ZFS 在加上 kernel-level 的 iSCSI target 相當適合作為日常 Storage 、VM storage 或是教室、辦公室無碟系統使用。<br><a id="more"></a></p>
-<p>FreeBSD 9.0 之後<a href="https://wiki.freebsd.org/InfiniBand" target="_blank" rel="noopener">加入了 Mellanox/Infiniband 的支援</a>，但是預設是沒有開啟的，因此裝上網卡後開機會看不到這張卡，我們得要自行編譯啟用。Mellanox 的 Driver 可以操作在 Ethernet 或是 Infiniband 模式，透過 sysctl 來切換操作的模式。在安裝上大致有兩種選擇，一種是把所需要的 kernel module 加入編譯設定檔後重新編譯 kernel，這會花上不少時間；如果你正好要重編 kernel可以透過這種方式。我採用的是另一種方式，只編譯我要的 kernel module。在編譯之前必須先下載跟你目前 FreeBSD 版本相同的 kernel sourcetree，因為我已經更新到最新的 FreeBSD 11.0-RELEASE-p10，直接透過 svn 下載最新的 source tree。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo svn checkout https://svn.freebsd.org/base/releng/11.0 /usr/src</span><br></pre></td></tr></table></figure></p>
-<p>接著透過一個簡單的 shell script 完成編譯跟安裝，因為我用不到 Infiniband 的功能，故在此只安裝 ethernet 相關的 module，Connect-X2 對應到的 driver 是 mlx4。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /usr/src/sys/modules</span><br><span class="line"><span class="keyword">for</span> module <span class="keyword">in</span> mlx4 mlxen; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">cd</span> <span class="variable">$module</span></span><br><span class="line">    make</span><br><span class="line">    make install</span><br><span class="line">    sync</span><br><span class="line">    kldload <span class="variable">$module</span></span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;module&#125;</span>_load=\"YES\""</span> &gt;&gt; /boot/loader.conf</span><br><span class="line">    <span class="built_in">cd</span> ..</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
-<p>最後記得在 sysctl.conf 裡面設定網卡的操作模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># sysctl.conf</span><br><span class="line"></span><br><span class="line"># 設定第 0 port 操作在 ethernet 模式</span><br><span class="line">sys.device.mlx4_coreX.mlx4_port0=eth</span><br></pre></td></tr></table></figure></p>
-<p>如果編譯及安裝成功，使用 kldstat 會看到 mlx4 跟 mlxen 被成功載入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ kldstat</span><br><span class="line">Id Refs Address            Size     Name</span><br><span class="line"> 1   21 0xffffffff80200000 1fa88f8  kernel</span><br><span class="line"> 2    1 0xffffffff821aa000 30aec0   zfs.ko</span><br><span class="line"> 3    2 0xffffffff824b5000 adc0     opensolaris.ko</span><br><span class="line"> 4    1 0xffffffff82b11000 2a05     uhid.ko</span><br><span class="line"> 5    2 0xffffffff82b14000 311ec    mlx4.ko</span><br><span class="line"> 6    2 0xffffffff82b46000 fcf6     linuxkpi.ko</span><br><span class="line"> 7    1 0xffffffff82b56000 12601    mlxen.ko</span><br></pre></td></tr></table></figure></p>
-<p>透過 ifconfig 可以看到 mlxen0 這張網卡<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mlxen0: flags=8802&lt;BROADCAST,SIMPLEX,MULTICAST&gt; metric 0 mtu 1500</span><br><span class="line">        options=6d07bb&lt;RXCSUM,TXCSUM,VLAN_MTU,VLAN_HWTAGGING,JUMBO_MTU,VLAN_HWCSUM,TSO4,TSO6,LRO,VLAN_HWFILTER,VLAN_HWTSO,LINKSTATE,RXCSUM_IPV6,TXCSUM_IPV6&gt;</span><br><span class="line">        ether 00:02:c9:XX:XX:XX</span><br><span class="line">        nd6 options=29&lt;PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL&gt;</span><br><span class="line">        media: Ethernet autoselect (autoselect &lt;full-duplex,rxpause,txpause&gt;)</span><br><span class="line">        status: active</span><br></pre></td></tr></table></figure></p>
+        <p>最近在 Taobao 上找到一個相當不錯的東西: Mellanox Connect-X2 10G NIC (MNPA19-XTR)。<a href="https://item.taobao.com/item.htm?id=546382206714&_u=t2dmg8j26111" target="_blank" rel="noopener">這張卡</a>在淘寶上的價格是 150 人民幣，換算成台幣之後 700 元有找，相較於 Intel x520 價格只要大概 1/10 不到，作為入門的 10G 網卡來說真的相當划算，我又挑了幾款 Cisco 的 SFP+ DAC 線之後，就交由集貨運來台灣。10G 網卡目前對我最重要的用途就是作為 iSCSI Storage 的介面卡，FreeBSD 搭配 ZFS 在加上 kernel-level 的 iSCSI target 相當適合作為日常 Storage 、VM storage 或是教室、辦公室無碟系統使用。</p>
+<a id="more"></a>
+
+<p>FreeBSD 9.0 之後<a href="https://wiki.freebsd.org/InfiniBand" target="_blank" rel="noopener">加入了 Mellanox/Infiniband 的支援</a>，但是預設是沒有開啟的，因此裝上網卡後開機會看不到這張卡，我們得要自行編譯啟用。Mellanox 的 Driver 可以操作在 Ethernet 或是 Infiniband 模式，透過 sysctl 來切換操作的模式。在安裝上大致有兩種選擇，一種是把所需要的 kernel module 加入編譯設定檔後重新編譯 kernel，這會花上不少時間；如果你正好要重編 kernel可以透過這種方式。我採用的是另一種方式，只編譯我要的 kernel module。在編譯之前必須先下載跟你目前 FreeBSD 版本相同的 kernel sourcetree，因為我已經更新到最新的 FreeBSD 11.0-RELEASE-p10，直接透過 svn 下載最新的 source tree。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo svn checkout https://svn.freebsd.org/base/releng/11.0 /usr/src</span><br></pre></td></tr></table></figure>
+
+<p>接著透過一個簡單的 shell script 完成編譯跟安裝，因為我用不到 Infiniband 的功能，故在此只安裝 ethernet 相關的 module，Connect-X2 對應到的 driver 是 mlx4。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /usr/src/sys/modules</span><br><span class="line"><span class="keyword">for</span> module <span class="keyword">in</span> mlx4 mlxen; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">cd</span> <span class="variable">$module</span></span><br><span class="line">    make</span><br><span class="line">    make install</span><br><span class="line">    sync</span><br><span class="line">    kldload <span class="variable">$module</span></span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;module&#125;</span>_load=\"YES\""</span> &gt;&gt; /boot/loader.conf</span><br><span class="line">    <span class="built_in">cd</span> ..</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<p>最後記得在 sysctl.conf 裡面設定網卡的操作模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># sysctl.conf</span><br><span class="line"></span><br><span class="line"># 設定第 0 port 操作在 ethernet 模式</span><br><span class="line">sys.device.mlx4_coreX.mlx4_port0=eth</span><br></pre></td></tr></table></figure>
+
+<p>如果編譯及安裝成功，使用 kldstat 會看到 mlx4 跟 mlxen 被成功載入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ kldstat</span><br><span class="line">Id Refs Address            Size     Name</span><br><span class="line"> 1   21 0xffffffff80200000 1fa88f8  kernel</span><br><span class="line"> 2    1 0xffffffff821aa000 30aec0   zfs.ko</span><br><span class="line"> 3    2 0xffffffff824b5000 adc0     opensolaris.ko</span><br><span class="line"> 4    1 0xffffffff82b11000 2a05     uhid.ko</span><br><span class="line"> 5    2 0xffffffff82b14000 311ec    mlx4.ko</span><br><span class="line"> 6    2 0xffffffff82b46000 fcf6     linuxkpi.ko</span><br><span class="line"> 7    1 0xffffffff82b56000 12601    mlxen.ko</span><br></pre></td></tr></table></figure>
+
+<p>透過 ifconfig 可以看到 mlxen0 這張網卡</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mlxen0: flags=8802&lt;BROADCAST,SIMPLEX,MULTICAST&gt; metric 0 mtu 1500</span><br><span class="line">        options=6d07bb&lt;RXCSUM,TXCSUM,VLAN_MTU,VLAN_HWTAGGING,JUMBO_MTU,VLAN_HWCSUM,TSO4,TSO6,LRO,VLAN_HWFILTER,VLAN_HWTSO,LINKSTATE,RXCSUM_IPV6,TXCSUM_IPV6&gt;</span><br><span class="line">        ether 00:02:c9:XX:XX:XX</span><br><span class="line">        nd6 options=29&lt;PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL&gt;</span><br><span class="line">        media: Ethernet autoselect (autoselect &lt;full-duplex,rxpause,txpause&gt;)</span><br><span class="line">        status: active</span><br></pre></td></tr></table></figure>
+
 <p>這樣就大功告成囉，但有一件事要注意，未來在做大版本更新的時候，別忘來要再重新編譯一次 kernel module 否則網卡會消失不見喔！</p>
 
     </div>
@@ -653,12 +665,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="總字數">NaNm</span>
+    <span title="總字數">23k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">NaN:aN</span>
+    <span title="所需總閱讀時間">21 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v3.9.0</div>
   <span class="post-meta-divider">|</span>

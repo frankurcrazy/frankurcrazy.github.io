@@ -297,7 +297,7 @@
               
                 <span class="post-meta-item-text">文章字數：</span>
               
-              <span title="文章字數">undefined</span>
+              <span title="文章字數">668</span>
             </span>
           
             <span class="post-meta-item">
@@ -307,7 +307,7 @@
               
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
               
-              <span title="所需閱讀時間">NaN:aN</span>
+              <span title="所需閱讀時間">1 分鐘</span>
             </span>
           
             <div class="post-description">透過 DNS-over-HTTPS 實現 DNS Request 加密，Mozilla 對此提出新標準</div>
@@ -322,12 +322,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Let’s encrypt 的免費憑證促成 HTTPS 快速普及，大部分的網頁流量都已經加密，雖然中間人無法直接得知其他人看過那些內容，但是仍然能夠透過窺探 DNS 封包來得知哪台電腦上過哪些網站，甚至能夠變造其內容導致 DNS hijacking/spoofing 等等攻擊的發生。先前所經常使用的技術像是 <a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions" title="Wikipedia: DNSSEC" target="_blank" rel="noopener">DNSSEC</a> 雖然能有效避免 spoofing 攻擊，但卻無法避免 DNS request 被偷看。為了解決這個問題，有人就提出了 <a href="https://tools.ietf.org/html/draft-ietf-doh-dns-over-https-02" title="IETF Draft DNS-over-HTTPS" target="_blank" rel="noopener">DNS-over-HTTPS</a>，也就是利用 HTTPS 協定來達成 DNS request / reply。而 Firefox 也將在接下來的 Nightly 版本中提供這樣的功能測試。<br><a id="more"></a><br>目前 DoH (DNS-over-HTTPS) 並沒有確定的標準，因此各家實作不同，從 Mozilla 所提出的<a href="https://tools.ietf.org/html/draft-ietf-doh-dns-over-https-02" title="IETF Draft DNS-over-HTTPS" target="_blank" rel="noopener">標準</a>來看，DoH 將會沿用 <a href="https://www.ietf.org/rfc/rfc1035.txt" title="RFC 1035: DNS Wireformat" target="_blank" rel="noopener">DNS Wireformat</a>。目前有支援這個標準的 DNS resolver 並不多，<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/wireformat/" title="Cloudflare Public DNS: DNS-over-HTTPS (DNS Wireformat)" target="_blank" rel="noopener">Cloudflare</a> 是其中之一。除了 DNS Wireformat 以外，<a href="https://developers.google.com/speed/public-dns/docs/dns-over-https" title="Google Public DNS: DNS-over-HTTPS" target="_blank" rel="noopener">Google Public DNS</a> 與 <a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/json-format/" title="Cloudflare Public DNS: DNS-over-HTTPS (JSON)" target="_blank" rel="noopener">Cloudflare</a> 也另外支援 JSON 格式的 DoH。</p>
+        <p>Let’s encrypt 的免費憑證促成 HTTPS 快速普及，大部分的網頁流量都已經加密，雖然中間人無法直接得知其他人看過那些內容，但是仍然能夠透過窺探 DNS 封包來得知哪台電腦上過哪些網站，甚至能夠變造其內容導致 DNS hijacking/spoofing 等等攻擊的發生。先前所經常使用的技術像是 <a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions" title="Wikipedia: DNSSEC" target="_blank" rel="noopener">DNSSEC</a> 雖然能有效避免 spoofing 攻擊，但卻無法避免 DNS request 被偷看。為了解決這個問題，有人就提出了 <a href="https://tools.ietf.org/html/draft-ietf-doh-dns-over-https-02" title="IETF Draft DNS-over-HTTPS" target="_blank" rel="noopener">DNS-over-HTTPS</a>，也就是利用 HTTPS 協定來達成 DNS request / reply。而 Firefox 也將在接下來的 Nightly 版本中提供這樣的功能測試。</p>
+<a id="more"></a>
+<p>目前 DoH (DNS-over-HTTPS) 並沒有確定的標準，因此各家實作不同，從 Mozilla 所提出的<a href="https://tools.ietf.org/html/draft-ietf-doh-dns-over-https-02" title="IETF Draft DNS-over-HTTPS" target="_blank" rel="noopener">標準</a>來看，DoH 將會沿用 <a href="https://www.ietf.org/rfc/rfc1035.txt" title="RFC 1035: DNS Wireformat" target="_blank" rel="noopener">DNS Wireformat</a>。目前有支援這個標準的 DNS resolver 並不多，<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/wireformat/" title="Cloudflare Public DNS: DNS-over-HTTPS (DNS Wireformat)" target="_blank" rel="noopener">Cloudflare</a> 是其中之一。除了 DNS Wireformat 以外，<a href="https://developers.google.com/speed/public-dns/docs/dns-over-https" title="Google Public DNS: DNS-over-HTTPS" target="_blank" rel="noopener">Google Public DNS</a> 與 <a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/json-format/" title="Cloudflare Public DNS: DNS-over-HTTPS (JSON)" target="_blank" rel="noopener">Cloudflare</a> 也另外支援 JSON 格式的 DoH。</p>
 <p>除了 Firefox Nightly 以外，還有一些 DoH Client，這類的 Client 擔任 Proxy 角色，接收一般的 DNS request 再透過 DoH 取得資料:</p>
 <ul>
 <li><a href="https://facebookexperimental.github.io/doh-proxy/" target="_blank" rel="noopener">doh-proxy</a></li>
 <li><a href="https://github.com/jedisct1/dnscrypt-proxy" target="_blank" rel="noopener">dnscrypt-proxy</a></li>
-<li><a href="https://github.com/aarond10/https\_dns\_proxy" target="_blank" rel="noopener">https_dns_proxy</a></li>
+<li><a href="https://github.com/aarond10/https_dns_proxy" target="_blank" rel="noopener">https_dns_proxy</a></li>
 <li><a href="https://github.com/m13253/dns-over-https" target="_blank" rel="noopener">dns-over-https</a></li>
 </ul>
 
@@ -626,12 +628,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="總字數">NaNm</span>
+    <span title="總字數">23k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">NaN:aN</span>
+    <span title="所需總閱讀時間">21 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v3.9.0</div>
   <span class="post-meta-divider">|</span>
