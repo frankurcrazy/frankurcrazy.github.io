@@ -1,61 +1,24 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next muse use-motion" lang="zh-TW">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '7.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    search: {
-      root: '/',
-      path: ''
-    },
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '複製',
-      copy_success: '複製成功',
-      copy_failure: '複製失敗'
-    }
-  };
-</script>
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"frankchang.me","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false,"padding":18},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"save":"auto","color":"#222"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="home directory of frank">
 <meta property="og:type" content="website">
@@ -63,16 +26,19 @@
 <meta property="og:url" content="https://frankchang.me/index.html">
 <meta property="og:site_name" content="&#x2F;home&#x2F;frank">
 <meta property="og:description" content="home directory of frank">
-<meta property="og:locale" content="zh-TW">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:author" content="Frank Chang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="&#x2F;home&#x2F;frank">
-<meta name="twitter:description" content="home directory of frank">
-  <link rel="canonical" href="https://frankchang.me/">
+
+<link rel="canonical" href="https://frankchang.me/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : true,
+    isPost : false
   };
 </script>
 
@@ -84,11 +50,8 @@
 
 
 
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -97,9 +60,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -109,20 +71,27 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
-
-  <div class="container sidebar-position-left page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">/home/frank</span>
@@ -131,184 +100,217 @@
     </div>
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切換導航欄">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
-
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-        
-        
-        
-          
-          <li class="menu-item menu-item-home menu-item-active">
-      
-    
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首頁</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-      
-    
+        <li class="menu-item menu-item-about">
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>歸檔</a>
+    <a href="/aboutme/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-      
-    
+        <li class="menu-item menu-item-tags">
 
-    <a href="/aboutme/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>關於</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-      
-    
+        <li class="menu-item menu-item-categories">
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>標籤</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-      
-    
+        <li class="menu-item menu-item-archives">
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分類</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-sitemap">
-      
-    
+        <li class="menu-item menu-item-sitemap">
 
-    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>網站地圖</a>
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>網站地圖</a>
 
   </li>
-    </ul>
-    
+  </ul>
 
 </nav>
-
 </div>
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-      
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankchang.me/2018/12/27/nginx-log-regex/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://frankchang.me/2020/03/19/lte-knas-derivation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/27/nginx-log-regex/" class="post-title-link" itemprop="url">Nginx Log 正規表達式</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/19/lte-knas-derivation/" class="post-title-link" itemprop="url">LTE NAS 金鑰計算</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
+              <span class="post-meta-item-text">發表於</span>
 
-              
-                
-              
-
-              <time title="創建時間：2018-12-27 15:24:42" itemprop="dateCreated datePublished" datetime="2018-12-27T15:24:42+08:00">2018-12-27</time>
+              <time title="創建時間：2020-03-19 16:40:59" itemprop="dateCreated datePublished" datetime="2020-03-19T16:40:59+08:00">2020-03-19</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
-                <time title="修改時間：2019-08-22 17:42:07" itemprop="dateModified" datetime="2019-08-22T17:42:07+08:00">2019-08-22</time>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-03-20 14:12:42" itemprop="dateModified" datetime="2020-03-20T14:12:42+08:00">2020-03-20</time>
               </span>
-            
-          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LTE/" itemprop="url" rel="index"><span itemprop="name">LTE</span></a>
+                </span>
+            </span>
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">1.1k</span>
+              <span>1.3k</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">1 分鐘</span>
+              <span>1 分鐘</span>
             </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近在實做 LTE 網路 Attach 流程 Non-access Stratum (NAS) 層加密及 MAC 值計算時，重新看了一次 <span class="math inline">\(K_{NASint}\)</span> 與 <span class="math inline">\(K_{NASenc}\)</span> 的計算方式，因此寫一篇文章紀錄以供日後參考。</p>
+<p>計算 <span class="math inline">\(K_{NASint}\)</span> 與 <span class="math inline">\(K_{NASenc}\)</span> 需要 <span class="math inline">\(K_{asme}\)</span> 及 Key derivation function (<span class="math inline">\(KDF\)</span>)。 <span class="math inline">\(K_{asme}\)</span> 可以透過 LTE 鑒權的流程取得。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/19/lte-knas-derivation/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://frankchang.me/2018/12/27/nginx-log-regex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Frank Chang">
+      <meta itemprop="description" content="home directory of frank">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="/home/frank">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
           
+            <a href="/2018/12/27/nginx-log-regex/" class="post-title-link" itemprop="url">Nginx Log 正規表達式</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2018-12-27 15:24:42" itemprop="dateCreated datePublished" datetime="2018-12-27T15:24:42+08:00">2018-12-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-08-22 17:42:07" itemprop="dateModified" datetime="2019-08-22T17:42:07+08:00">2019-08-22</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>1k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>1 分鐘</span>
+            </span>
 
         </div>
       </header>
@@ -320,18 +322,14 @@
 
       
           <p>最近想分析 Nginx 的 Log，最後自己寫了一個 regex，記錄一下。在 IP 部分省麻煩沒有做任何驗證，IPv4 或 IPv6 皆可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?P&lt;ip&gt;[^\s]+)\s-\s(?P&lt;remote_user&gt;[^\s])\s\[(?P&lt;time_local&gt;[^]]*)\]\s\&quot;(?P&lt;request&gt;(?P&lt;method&gt;[A-Z]&#123;3,7&#125;)\s(?&lt;uri&gt;.*)\s(?&lt;http_version&gt;HTTP\/[^&quot;]+))\&quot;\s(?P&lt;status&gt;\d&#123;3&#125;)\s(?P&lt;body_bytes_sent&gt;\d+)\s\&quot;(?P&lt;referer&gt;[^\&quot;]*)\&quot;\s\&quot;(?P&lt;http_user_agent&gt;[^\&quot;]+)\&quot;\s\&quot;(?P&lt;http_x_forwarded_for&gt;[^\&quot;]+)\&quot;</span><br></pre></td></tr></table></figure>
-
-<p>這個正規表達式對應的是預設的 Nginx <code>main</code> log 格式:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                  &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?P&lt;ip&gt;[^\s]+)\s-\s(?P&lt;remote_user&gt;[^\s])\s\[(?P&lt;time_local&gt;[^]]*)\]\s\&quot;(?P&lt;request&gt;(?P&lt;method&gt;[A-Z]&#123;3,7&#125;)\s(?&lt;uri&gt;.*)\s(?&lt;http_version&gt;HTTP\&#x2F;[^&quot;]+))\&quot;\s(?P&lt;status&gt;\d&#123;3&#125;)\s(?P&lt;body_bytes_sent&gt;\d+)\s\&quot;(?P&lt;referer&gt;[^\&quot;]*)\&quot;\s\&quot;(?P&lt;http_user_agent&gt;[^\&quot;]+)\&quot;\s\&quot;(?P&lt;http_x_forwarded_for&gt;[^\&quot;]+)\&quot;</span><br></pre></td></tr></table></figure>
+<p>這個正規表達式對應的是預設的 Nginx <code>main</code> log 格式: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;</span><br><span class="line">                  &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;</span><br><span class="line">                  &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
-          
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/12/27/nginx-log-regex/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -340,128 +338,84 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2018/12/18/sim7000c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/18/sim7000c/" class="post-title-link" itemprop="url">讓 Raspberry PI 聯網：使用 SIM7000C NB-IoT 模組</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/18/sim7000c/" class="post-title-link" itemprop="url">讓 Raspberry PI 聯網：使用 SIM7000C NB-IoT 模組</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2018-12-18 11:07:59" itemprop="dateCreated datePublished" datetime="2018-12-18T11:07:59+08:00">2018-12-18</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 17:43:36" itemprop="dateModified" datetime="2019-08-22T17:43:36+08:00">2019-08-22</time>
               </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a></span>
-
-                
-                
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a>
+                </span>
                   ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Networking/Raspberry-Pi/" itemprop="url" rel="index"><span itemprop="name">Raspberry Pi</span></a></span>
-
-                
-                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Networking/Raspberry-Pi/" itemprop="url" rel="index"><span itemprop="name">Raspberry Pi</span></a>
+                </span>
                   ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Networking/Raspberry-Pi/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Networking/Raspberry-Pi/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
             </span>
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">4.3k</span>
+              <span>4.1k</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">4 分鐘</span>
+              <span>4 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -473,22 +427,21 @@
 
       
           <p>前幾天花了一些時間將 Raspberry Pi 接上 Cat-M1/NB-IoT，過程中遇到一些障礙，決定寫一篇文章將完整的過程記錄下來。</p>
-<h2 id="實驗設備"><a href="#實驗設備" class="headerlink" title="實驗設備"></a>實驗設備</h2><ol>
+<h2 id="實驗設備">實驗設備</h2>
+<ol type="1">
 <li>Raspberry Pi <strong>3B+</strong></li>
 <li>Waveshare SIM7000<strong>C</strong> NB-IoT HAT</li>
 <li>中華電信 NB-IoT SIM 卡一張</li>
 </ol>
 <p>SIM7000 能夠支援 CAT-M1 與 NB-IoT，依據支援的頻段有分為四個不同的版本：<code>SIM7000A</code>, <code>SIM7000C</code>, <code>SIM7000E</code>, <code>SIM7000G</code>，其中 A 代表 America，C 代表 Chinese，E 代表 Europe，而 G 則代表 Global。選購時須要依據所在的地區及當地 ISP 所支援的頻段來購買，否則 SIM 卡插上去可是找不到基地台的。在台灣我選擇的是 SIM7000C，聽說 SIM7000E 也能通。而 SIM7000G 是全頻段支援，因此如果買的到這張應該是最方便，但是在我寫這篇的時候還找不到 SIM7000G 版本的 HAT，所以最後買了 SIM7000C。</p>
 <p>除此之外還需要一張 NB-IoT SIM 卡，目前中華電信的方案每月最低只要 10 元，有 5 MB 的傳輸量，不過似乎是企業方案，只能透過公司行號來申請，如果有個人想要申請可能還是打個電話去問問。</p>
-<p>目前我附近掃到 NB-IoT/CAT-M1 基地台只有中華電信，其餘的可能是在其他頻段。</p>
+<p>目前我附近掃到 NB-IoT/CAT-M1 基地台只有中華電信，其餘的可能是在其他頻段。
           <!--noindex-->
-          
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/12/18/sim7000c/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -497,114 +450,76 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2018/07/27/tcp-fastopen/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/07/27/tcp-fastopen/" class="post-title-link" itemprop="url">RFC 7413: TCP Fastopen 快速開啟 (TFO)</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/27/tcp-fastopen/" class="post-title-link" itemprop="url">RFC 7413: TCP Fastopen 快速開啟 (TFO)</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2018-07-27 10:55:17" itemprop="dateCreated datePublished" datetime="2018-07-27T10:55:17+08:00">2018-07-27</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 17:43:54" itemprop="dateModified" datetime="2019-08-22T17:43:54+08:00">2019-08-22</time>
               </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a></span>
-
-                
-                
-              
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a>
+                </span>
             </span>
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">1.6k</span>
+              <span>1.4k</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">1 分鐘</span>
+              <span>1 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -619,13 +534,11 @@
 <p>舉個例子，當你在利用 FTP 把 10000 個檔案從美國傳回台灣，因為 FTP 的特性會為每一個檔案建立一條新的連線。考慮美國到台灣的 RTT 大概是 200ms，每建立一個連線就要花掉 2*RTT 的時間，等於是 0.4 秒鐘，而這只是一個檔案。<em>10000 個檔案光連線建立就要花費 4000 秒</em>，一個多小時就這樣過去了，還不包括實際傳輸檔案的時間。要解決這樣的問題，一般來說就是盡量使用 persistent connection 或是口語一點的 long-lived connection，避免建立新的連線、重複使用舊的連線，事實上這種作法還有一個好處就是避免 TCP Slow-start，不用每條連線都等待 congestion window ramp-up。然而像 FTP 這種早就該放進博物館卻還是有一堆人在使用。</p>
 <p>另一個例子則是之前我有特別寫文章介紹的 <a href="https://frankchang.me/2018/04/02/DNS-over-HTTPS/">DNS-over-HTTPS</a>，用 TCP 來做 DNS Server 就是典型的 short-lived connection 的例子，想像你要解個 domain 要至少花上 2*RTT 的時間 (當然這邊還有其他議題，例如 TLS Handshake 本身就要花上 2*RTT，當然有些解法，像是 TLS False-start 及 TLS 1.3 的 Session resumption，等哪天有空再補上)。為此 <a href="https://tools.ietf.org/html/rfc7413" target="_blank" rel="noopener">RFC 7413</a> 就在 TCP 中延伸了一個 Fastopen 的方法來加快連線建立的速度。</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/07/27/tcp-fastopen/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -634,99 +547,67 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2018/04/16/eip-999/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/04/16/eip-999/" class="post-title-link" itemprop="url">EIP-999: 多重簽名錢包解凍方案?</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/16/eip-999/" class="post-title-link" itemprop="url">EIP-999: 多重簽名錢包解凍方案?</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2018-04-16 18:15:39" itemprop="dateCreated datePublished" datetime="2018-04-16T18:15:39+08:00">2018-04-16</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 13:40:27" itemprop="dateModified" datetime="2019-08-22T13:40:27+08:00">2019-08-22</time>
               </span>
-            
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">659</span>
+              <span>607</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">1 分鐘</span>
+              <span>1 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -737,15 +618,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          因為 WalletLibrary 被刪除而被凍結的 ETH 因為 EIP-999 而有找回的可能性
+          <p>因為 WalletLibrary 被刪除而被凍結的 ETH 因為 EIP-999 而有找回的可能性</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/04/16/eip-999/">
                 閱讀全文 &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -754,121 +633,80 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2018/04/16/591-housing-api/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/04/16/591-housing-api/" class="post-title-link" itemprop="url">591 租屋資料 API</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/16/591-housing-api/" class="post-title-link" itemprop="url">591 租屋資料 API</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2018-04-16 11:40:20" itemprop="dateCreated datePublished" datetime="2018-04-16T11:40:20+08:00">2018-04-16</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 17:42:47" itemprop="dateModified" datetime="2019-08-22T17:42:47+08:00">2019-08-22</time>
               </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
-
-                
-                
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
                   ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
             </span>
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">2.9k</span>
+              <span>2k</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">3 分鐘</span>
+              <span>2 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -879,15 +717,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          透過 API 讀取 591 租屋網資料
+          <p>透過 API 讀取 591 租屋網資料</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/04/16/591-housing-api/">
                 閱讀全文 &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -896,99 +732,67 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2018/04/02/DNS-over-HTTPS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/04/02/DNS-over-HTTPS/" class="post-title-link" itemprop="url">DNS-over-HTTPS</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/02/DNS-over-HTTPS/" class="post-title-link" itemprop="url">DNS-over-HTTPS</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2018-04-02 08:35:22" itemprop="dateCreated datePublished" datetime="2018-04-02T08:35:22+08:00">2018-04-02</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 13:40:27" itemprop="dateModified" datetime="2019-08-22T13:40:27+08:00">2019-08-22</time>
               </span>
-            
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">658</span>
+              <span>598</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">1 分鐘</span>
+              <span>1 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -999,15 +803,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          透過 DNS-over-HTTPS 實現 DNS Request 加密，Mozilla 對此提出新標準
+          <p>透過 DNS-over-HTTPS 實現 DNS Request 加密，Mozilla 對此提出新標準</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/04/02/DNS-over-HTTPS/">
                 閱讀全文 &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -1016,114 +818,76 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2018/03/09/freebsd-nginx-full/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/03/09/freebsd-nginx-full/" class="post-title-link" itemprop="url">FreeBSD 安裝 Nginx full 錯誤處理</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/09/freebsd-nginx-full/" class="post-title-link" itemprop="url">FreeBSD 安裝 Nginx full 錯誤處理</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2018-03-09 07:21:04" itemprop="dateCreated datePublished" datetime="2018-03-09T07:21:04+08:00">2018-03-09</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 17:41:38" itemprop="dateModified" datetime="2019-08-22T17:41:38+08:00">2019-08-22</time>
               </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/FreeBSD/" itemprop="url" rel="index"><span itemprop="name">FreeBSD</span></a></span>
-
-                
-                
-              
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FreeBSD/" itemprop="url" rel="index"><span itemprop="name">FreeBSD</span></a>
+                </span>
             </span>
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">983</span>
+              <span>983</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">1 分鐘</span>
+              <span>1 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -1134,15 +898,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Nginx 1.12 加入了 Dynamic module 的功能，可以動態載入想要的功能。在 FreeBSD Package 中，預設的 nginx 不知道為何將 HTTP/2 的選項關掉了，因此要開啟 HTTP/2 只能選擇安裝 nginx-full。然而安裝完後卻會發現 nginx 開起來卻看不到熟悉的 “Welcome to nginx!” 畫面。<br>查了一下在 error.log 出現資訊</p>
+          <p>Nginx 1.12 加入了 Dynamic module 的功能，可以動態載入想要的功能。在 FreeBSD Package 中，預設的 nginx 不知道為何將 HTTP/2 的選項關掉了，因此要開啟 HTTP/2 只能選擇安裝 nginx-full。然而安裝完後卻會發現 nginx 開起來卻看不到熟悉的 "Welcome to nginx!" 畫面。 查了一下在 error.log 出現資訊
           <!--noindex-->
-          
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/03/09/freebsd-nginx-full/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -1151,114 +913,76 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2018/02/08/cisco-unsupported-transceiver/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/02/08/cisco-unsupported-transceiver/" class="post-title-link" itemprop="url">讓 Cisco 設備使用第三方 SFP/SFP+</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/08/cisco-unsupported-transceiver/" class="post-title-link" itemprop="url">讓 Cisco 設備使用第三方 SFP/SFP+</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2018-02-08 14:30:34" itemprop="dateCreated datePublished" datetime="2018-02-08T14:30:34+08:00">2018-02-08</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 17:42:20" itemprop="dateModified" datetime="2019-08-22T17:42:20+08:00">2019-08-22</time>
               </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a></span>
-
-                
-                
-              
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a>
+                </span>
             </span>
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">1k</span>
+              <span>910</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">1 分鐘</span>
+              <span>1 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -1269,16 +993,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>如果有人想要買網管型 Switch，跑來問我該買哪一台比較適合，我一定唯一推薦買二手  Cisco Switch，不但功能多、穩定，而且最重要的，價格非常的實惠。以目前在沒屋頂的售價來說，一台 48 port 1Gbps C2960 只要 3000 元以內就搞定，你想要的 dhcp snooping, mac binding, vlan 一應俱全。如果你想要找基本的 L3 Switch，可以找看看 C3560e，帶兩個 10G X2 接口 (可以轉成 TwinGig 接四個 1G SFP)，價格約落在 4000 以內就有了，還支援 PoE。如果需要比較完整的 L3 功能可以考慮 C3560G/C3750G。目前全新的 D-Link 或是 TP-Link 用這樣的價格都買不到，而且界面也不好用。</p>
-<p>但是使用 Cisco 的設備會遇到一個麻煩，就是它會鎖 Mini-GBIC vendor code；因此如果插上第三方的 SFP/SFP+，該 port 就會直接進入 err-disabled 的狀態，完全無法使用。一般的作法是請對方燒 ID (掏寶上的廠商多半會配合)，另一種更簡單的方法就是直接在交換器上關閉這個檢查。</p>
+          <p>如果有人想要買網管型 Switch，跑來問我該買哪一台比較適合，我一定唯一推薦買二手 Cisco Switch，不但功能多、穩定，而且最重要的，價格非常的實惠。以目前在沒屋頂的售價來說，一台 48 port 1Gbps C2960 只要 3000 元以內就搞定，你想要的 dhcp snooping, mac binding, vlan 一應俱全。如果你想要找基本的 L3 Switch，可以找看看 C3560e，帶兩個 10G X2 接口 (可以轉成 TwinGig 接四個 1G SFP)，價格約落在 4000 以內就有了，還支援 PoE。如果需要比較完整的 L3 功能可以考慮 C3560G/C3750G。目前全新的 D-Link 或是 TP-Link 用這樣的價格都買不到，而且界面也不好用。</p>
+<p>但是使用 Cisco 的設備會遇到一個麻煩，就是它會鎖 Mini-GBIC vendor code；因此如果插上第三方的 SFP/SFP+，該 port 就會直接進入 err-disabled 的狀態，完全無法使用。一般的作法是請對方燒 ID (掏寶上的廠商多半會配合)，另一種更簡單的方法就是直接在交換器上關閉這個檢查。
           <!--noindex-->
-          
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/02/08/cisco-unsupported-transceiver/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -1287,99 +1009,67 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2018/01/31/dpdk-mempool/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/01/31/dpdk-mempool/" class="post-title-link" itemprop="url">DPDK Mempool</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/31/dpdk-mempool/" class="post-title-link" itemprop="url">DPDK Mempool</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2018-01-31 14:19:38" itemprop="dateCreated datePublished" datetime="2018-01-31T14:19:38+08:00">2018-01-31</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 13:40:27" itemprop="dateModified" datetime="2019-08-22T13:40:27+08:00">2019-08-22</time>
               </span>
-            
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">683</span>
+              <span>546</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">1 分鐘</span>
+              <span>1 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -1392,13 +1082,11 @@
       
           <p>在我使用 DPDK 的經驗裡，要分配空間通常都是直接利用 <code>rte_pktmbuf_pool_create()</code> 函式來建立。這個函式會建立一個專門用於存放 packet buffer (<code>struct rte_mbuf</code>) 的儲存池。完整的函式 prototype 如下:</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/01/31/dpdk-mempool/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -1407,121 +1095,80 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2017/09/08/hinet-pppoe-ipv6-dual-stack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/09/08/hinet-pppoe-ipv6-dual-stack/" class="post-title-link" itemprop="url">中華電信 PPPoE IPv6 Dual Stack</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/09/08/hinet-pppoe-ipv6-dual-stack/" class="post-title-link" itemprop="url">中華電信 PPPoE IPv6 Dual Stack</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2017-09-08 23:54:14" itemprop="dateCreated datePublished" datetime="2017-09-08T23:54:14+08:00">2017-09-08</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 13:40:27" itemprop="dateModified" datetime="2019-08-22T13:40:27+08:00">2019-08-22</time>
               </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
                   ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a>
+                </span>
             </span>
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">2.4k</span>
+              <span>2.1k</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">2 分鐘</span>
+              <span>2 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -1532,18 +1179,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>前鎮子申請了中華電信的 PPPoE IPv6 Dual Stack 服務，在我的 Linux Router 上只需要在 <code>/etc/ppp/options</code> 中加入 </p>
-<figure class="highlight plain"><figcaption><span>/etc/ppp/option</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ipv6 ipv6cp-use-ipaddr</span><br></pre></td></tr></table></figure>
-
+          <p>前鎮子申請了中華電信的 PPPoE IPv6 Dual Stack 服務，在我的 Linux Router 上只需要在 <code>/etc/ppp/options</code> 中加入 <figure class="highlight plain"><figcaption><span>/etc/ppp/option</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ipv6 ipv6cp-use-ipaddr</span><br></pre></td></tr></table></figure></p>
 <p>接著 poff/pon 之後就能夠正確取得 IPv6，router 也能夠正確連上 IPv6 網站，但麻煩的是中華電信只配了一段 prefix 64 的 subnet，如果要把這段 IP 分配給其他台電腦使用，就要花費一些功夫。索性就把它寫成一個 script，並且讓它在連上 PPPoE 後自動執行。</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2017/09/08/hinet-pppoe-ipv6-dual-stack/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -1552,99 +1195,67 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2017/06/27/replace-virtualbox-pxe-rom/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/06/27/replace-virtualbox-pxe-rom/" class="post-title-link" itemprop="url">取代 VirtualBox 網路卡 BootRom</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/06/27/replace-virtualbox-pxe-rom/" class="post-title-link" itemprop="url">取代 VirtualBox 網路卡 BootRom</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2017-06-27 03:13:41" itemprop="dateCreated datePublished" datetime="2017-06-27T03:13:41+08:00">2017-06-27</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 13:40:27" itemprop="dateModified" datetime="2019-08-22T13:40:27+08:00">2019-08-22</time>
               </span>
-            
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">843</span>
+              <span>764</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">1 分鐘</span>
+              <span>1 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -1655,136 +1266,90 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>VirtualBox 中網路卡預設的 BootROM 是使用 iPXE，但是這個預設的 iPXE 只有少少的功能，例如在無碟開機所需要的 iSCSI 功能沒有編進去。當然我們可以利用 DHCP + TFTP 送 iPXE Image 做 PXE chainloading，但是實務上就會遇到一些問題，最主要是無法確定現在用的究竟是哪個 iPXE，因為 user-class 通通都是 “iPXE”。</p>
+          <p>VirtualBox 中網路卡預設的 BootROM 是使用 iPXE，但是這個預設的 iPXE 只有少少的功能，例如在無碟開機所需要的 iSCSI 功能沒有編進去。當然我們可以利用 DHCP + TFTP 送 iPXE Image 做 PXE chainloading，但是實務上就會遇到一些問題，最主要是無法確定現在用的究竟是哪個 iPXE，因為 user-class 通通都是 "iPXE"。</p>
 <p>我的解決方案就是回歸使用 Intel PXE BootROM 這樣就能正常使用 PXE Chainloading 的功能導入功能完整的 iPXE。在 VirtualBox 的 Extension Pack 裡面就有提供 Intel 的 PXE BootROM。在安裝完 VirtualBox Extension Pack 之後，找找看 <code>/usr/local/lib</code> 或 <code>/lib</code> 有沒有 virtualbox 資料夾。我使用 Archlinux，就可以找到 <code>/lib/virtualbox/ExtensionPacks/Oracle_VM_VirtualBox_Extension_Pack</code> 這個目錄，在裡面有個 <code>PXE-Intel.rom</code> 檔案，這就是 Intel 的 PXE BootROM，接著我們要設定 Guest 的網卡改用這個 PXE Image 開機。</p>
-<p>設定的方式是透過 VBoxManage 這個指令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vboxmanage setextradata Diskless10 VBoxInternal/Devices/pcbios/0/Config/LanBootRom /lib/virtualbox/ExtensionPacks/Oracle_VM_VirtualBox_Extension_PackPXE-Intel.rom</span><br></pre></td></tr></table></figure>
-<p>其中 <code>Diskless10</code> 是 Guest 的名稱，如果換成 <code>global</code> 那麼所有的 Guest 都會使用 Intel PXE BootROM。</p>
+<p>設定的方式是透過 VBoxManage 這個指令： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vboxmanage setextradata Diskless10 VBoxInternal/Devices/pcbios/0/Config/LanBootRom /lib/virtualbox/ExtensionPacks/Oracle_VM_VirtualBox_Extension_PackPXE-Intel.rom</span><br></pre></td></tr></table></figure> 其中 <code>Diskless10</code> 是 Guest 的名稱，如果換成 <code>global</code> 那麼所有的 Guest 都會使用 Intel PXE BootROM。</p>
 
-          
-        
       
     </div>
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2017/05/02/Enable-Mellanox-Connect-X2-10G-NIC-in-FreeBSD-11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/05/02/Enable-Mellanox-Connect-X2-10G-NIC-in-FreeBSD-11/" class="post-title-link" itemprop="url">在 FreeBSD 11 中使用 Mellanox Connect-X2 (MNPA19-XTR) 10G 網卡</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/05/02/Enable-Mellanox-Connect-X2-10G-NIC-in-FreeBSD-11/" class="post-title-link" itemprop="url">在 FreeBSD 11 中使用 Mellanox Connect-X2 (MNPA19-XTR) 10G 網卡</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2017-05-02 13:41:48" itemprop="dateCreated datePublished" datetime="2017-05-02T13:41:48+08:00">2017-05-02</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 13:40:27" itemprop="dateModified" datetime="2019-08-22T13:40:27+08:00">2019-08-22</time>
               </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/FreeBSD/" itemprop="url" rel="index"><span itemprop="name">FreeBSD</span></a></span>
-
-                
-                
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FreeBSD/" itemprop="url" rel="index"><span itemprop="name">FreeBSD</span></a>
+                </span>
                   ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/FreeBSD/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FreeBSD/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a>
+                </span>
             </span>
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">2.2k</span>
+              <span>1.9k</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">2 分鐘</span>
+              <span>2 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -1795,15 +1360,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>最近在 Taobao 上找到一個相當不錯的東西: Mellanox Connect-X2 10G NIC (MNPA19-XTR)。<a href="https://item.taobao.com/item.htm?id=546382206714&_u=t2dmg8j26111" target="_blank" rel="noopener">這張卡</a>在淘寶上的價格是 150 人民幣，換算成台幣之後 700 元有找，相較於 Intel x520 價格只要大概 1/10 不到，作為入門的 10G 網卡來說真的相當划算，我又挑了幾款 Cisco 的 SFP+ DAC 線之後，就交由集貨運來台灣。10G 網卡目前對我最重要的用途就是作為 iSCSI Storage 的介面卡，FreeBSD 搭配 ZFS 在加上 kernel-level 的 iSCSI target 相當適合作為日常 Storage 、VM storage 或是教室、辦公室無碟系統使用。</p>
+          <p>最近在 Taobao 上找到一個相當不錯的東西: Mellanox Connect-X2 10G NIC (MNPA19-XTR)。<a href="https://item.taobao.com/item.htm?id=546382206714&amp;_u=t2dmg8j26111" target="_blank" rel="noopener">這張卡</a>在淘寶上的價格是 150 人民幣，換算成台幣之後 700 元有找，相較於 Intel x520 價格只要大概 1/10 不到，作為入門的 10G 網卡來說真的相當划算，我又挑了幾款 Cisco 的 SFP+ DAC 線之後，就交由集貨運來台灣。10G 網卡目前對我最重要的用途就是作為 iSCSI Storage 的介面卡，FreeBSD 搭配 ZFS 在加上 kernel-level 的 iSCSI target 相當適合作為日常 Storage 、VM storage 或是教室、辦公室無碟系統使用。
           <!--noindex-->
-          
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2017/05/02/Enable-Mellanox-Connect-X2-10G-NIC-in-FreeBSD-11/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -1812,121 +1375,80 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2016/10/17/stew-pork-with-apple-sidra/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/10/17/stew-pork-with-apple-sidra/" class="post-title-link" itemprop="url">蘋果西打燉肉</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/10/17/stew-pork-with-apple-sidra/" class="post-title-link" itemprop="url">蘋果西打燉肉</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2016-10-17 00:58:59" itemprop="dateCreated datePublished" datetime="2016-10-17T00:58:59+08:00">2016-10-17</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 13:40:27" itemprop="dateModified" datetime="2019-08-22T13:40:27+08:00">2019-08-22</time>
               </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/雜事/" itemprop="url" rel="index"><span itemprop="name">雜事</span></a></span>
-
-                
-                
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9B%9C%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">雜事</span></a>
+                </span>
                   ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/雜事/黑暗料理界/" itemprop="url" rel="index"><span itemprop="name">黑暗料理界</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9B%9C%E4%BA%8B/%E9%BB%91%E6%9A%97%E6%96%99%E7%90%86%E7%95%8C/" itemprop="url" rel="index"><span itemprop="name">黑暗料理界</span></a>
+                </span>
             </span>
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">989</span>
+              <span>971</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">1 分鐘</span>
+              <span>1 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -1938,23 +1460,15 @@
 
       
         <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-            <div class="post-gallery-row">
-              <img src="/images/loading.gif" data-original="/2016/10/17/stew-pork-with-apple-sidra/IMG_0751.jpg" itemprop="contentUrl">
-            
-          
-
-          </div>
+            <img src="/images/loading.gif" data-original="/2016/10/17/stew-pork-with-apple-sidra/IMG_0751.jpg" itemprop="contentUrl">
         </div>
-          <p>深夜看到 Facebook 上有人分享這個西打燉肉的食譜，那個油亮油亮的質感實在是太犯規了，看完口水差點滴在鍵盤上Orz，只好決定隔天立馬到買材料自幹一下蘋果西打燉肉；附上正版的西打燉肉參考影片：</p>
-<div class="video-container"><iframe src="//www.youtube.com/embed/dbFbTSDW990" frameborder="0" allowfullscreen></iframe></div>
+          <p>深夜看到 Facebook 上有人分享這個西打燉肉的食譜，那個油亮油亮的質感實在是太犯規了，看完口水差點滴在鍵盤上Orz，只好決定隔天立馬到買材料自幹一下蘋果西打燉肉；附上正版的西打燉肉參考影片： <div class="video-container"><iframe src="https://www.youtube.com/embed/dbFbTSDW990" frameborder="0" loading="lazy" allowfullscreen></iframe></div></p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2016/10/17/stew-pork-with-apple-sidra/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -1963,121 +1477,80 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2016/10/13/freebsd-11-blacklistd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/10/13/freebsd-11-blacklistd/" class="post-title-link" itemprop="url">FreeBSD 11 新功能 - blacklistd</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/10/13/freebsd-11-blacklistd/" class="post-title-link" itemprop="url">FreeBSD 11 新功能 - blacklistd</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2016-10-13 01:28:55" itemprop="dateCreated datePublished" datetime="2016-10-13T01:28:55+08:00">2016-10-13</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 13:40:27" itemprop="dateModified" datetime="2019-08-22T13:40:27+08:00">2019-08-22</time>
               </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/FreeBSD/" itemprop="url" rel="index"><span itemprop="name">FreeBSD</span></a></span>
-
-                
-                
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FreeBSD/" itemprop="url" rel="index"><span itemprop="name">FreeBSD</span></a>
+                </span>
                   ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/FreeBSD/blacklistd/" itemprop="url" rel="index"><span itemprop="name">blacklistd</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FreeBSD/blacklistd/" itemprop="url" rel="index"><span itemprop="name">blacklistd</span></a>
+                </span>
             </span>
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">2k</span>
+              <span>1.9k</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">2 分鐘</span>
+              <span>2 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -2089,22 +1562,15 @@
 
       
         <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-            <div class="post-gallery-row">
-              <img src="/images/loading.gif" data-original="/images/freebsd-sticker.jpg" itemprop="contentUrl">
-            
-          
-
-          </div>
+            <img src="/images/loading.gif" data-original="/images/freebsd-sticker.jpg" itemprop="contentUrl">
         </div>
           <p>在最近發布的 FreeBSD 11.0-Release 多了一個新功能 - <em>blacklistd</em>，這個功能最早是設計在 NetBSD 7 中，用來阻擋暴力破解 (Brute-force) 或者阻斷服務 (Denial of Service) 等攻擊。blacklistd 提供了一個界面讓服務 daemon 遭遇攻擊時能夠發出通知，當攻擊次數達到某個自訂的門檻之後，blacklistd 能夠搭配防火牆來阻斷惡意攻擊。</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2016/10/13/freebsd-11-blacklistd/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -2113,114 +1579,76 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2016/10/12/my-new-blog-with-hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/10/12/my-new-blog-with-hexo/" class="post-title-link" itemprop="url">新窩落成</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/10/12/my-new-blog-with-hexo/" class="post-title-link" itemprop="url">新窩落成</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2016-10-12 02:20:54" itemprop="dateCreated datePublished" datetime="2016-10-12T02:20:54+08:00">2016-10-12</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 13:40:27" itemprop="dateModified" datetime="2019-08-22T13:40:27+08:00">2019-08-22</time>
               </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/雜事/" itemprop="url" rel="index"><span itemprop="name">雜事</span></a></span>
-
-                
-                
-              
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9B%9C%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">雜事</span></a>
+                </span>
             </span>
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">273</span>
+              <span>259</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">1 分鐘</span>
+              <span>1 分鐘</span>
             </span>
-          
 
         </div>
       </header>
@@ -2231,262 +1659,120 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>最近碰的東西有點雜，需要一個地方好好把他們寫下來，Survey 了一下發現台灣人寫的 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 是一個很不錯的選擇；Hexo 的架構很簡單且易於維護，使用 markdown 語言來寫作，並透過指令產生靜態頁面，不需要 cgi 的支援，也不需額外的資料庫，不僅速度快，更重要的是不用擔心被人輕易的打下來 (想想 WordPress)。</p>
+          <p>最近碰的東西有點雜，需要一個地方好好把他們寫下來，Survey 了一下發現台灣人寫的 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 是一個很不錯的選擇；Hexo 的架構很簡單且易於維護，使用 markdown 語言來寫作，並透過指令產生靜態頁面，不需要 cgi 的支援，也不需額外的資料庫，不僅速度快，更重要的是不用擔心被人輕易的打下來 (想想 WordPress)。</p>
 <p>目前選用的佈景主題是 <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a>，這個佈景主題配色上以黑白為主，介面看起來相當的簡潔，適合像我一樣有潔癖的人 (?</p>
 <p>未來會在這邊新增一些關於 FreeBSD/Linux 伺服器管理的相關的心得，以及一些書籍的閱讀心得。</p>
 
-          
-        
       
     </div>
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-  </section>
+  </div>
 
   
+
 
 
           </div>
           
 
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
 
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">Frank Chang</p>
-  <div class="site-description motion-element" itemprop="description">home directory of frank</div>
+  <div class="site-description" itemprop="description">home directory of frank</div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-categories">
-        
-          
             <a href="/categories/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">12</span>
-        <span class="site-state-item-name">分類</span>
-        </a>
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分類</span></a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/tags/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">標籤</span>
-        </a>
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">標籤</span></a>
       </div>
-    
   </nav>
+</div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/frankurcrazy" title="GitHub &rarr; https://github.com/frankurcrazy" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/frankurcrazy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;frankurcrazy" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
-    
       <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://twitter.com/_frank_chang_" title="Twitter &rarr; https://twitter.com/_frank_chang_" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+        <a href="https://twitter.com/_frank_chang_" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_frank_chang_" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
       </span>
-    
   </div>
 
 
 
-        </div>
       </div>
 
     </div>
@@ -2497,10 +1783,15 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Frank Chang</span>
@@ -2508,16 +1799,18 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="總字數">23k</span>
+    <span title="總字數">21k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">20 分鐘</span>
+    <span title="所需總閱讀時間">19 分鐘</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v3.9.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.2.0
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主題 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.3.0</div>
+  <div class="theme-info">主題 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.2
+  </div>
 
         
 
@@ -2528,38 +1821,26 @@
 
 
 
-        
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-  <script src="/js/utils.js?v=7.3.0"></script>
-  <script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/utils.js"></script>
 
-  
-  <script src="/js/schemes/muse.js?v=7.3.0"></script>
+<script src="/js/motion.js"></script>
 
 
-  
+<script src="/js/schemes/muse.js"></script>
 
-  <script src="/js/next-boot.js?v=7.3.0"></script>
 
-  
+<script src="/js/next-boot.js"></script>
 
-  
 
-  
 
 
   
@@ -2578,26 +1859,74 @@
 
 
 
+  
 
+  
+      
 
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
 
+    
 
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri == 'https://frankchang.me/',]
+      });
+      });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
 </html>

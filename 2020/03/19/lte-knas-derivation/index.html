@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"frankchang.me","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false,"padding":18},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"save":"auto","color":"#222"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="最近在實做 LTE 網路 Attach 流程 Non-access Stratum (NAS) 層加密及 MAC 值計算時，重新看了一次 \(K_{NASint}\) 與 \(K_{NASenc}\) 的計算方式，因此寫一篇文章紀錄以供日後參考。 計算 \(K_{NASint}\) 與 \(K_{NASenc}\) 需要 \(K_{asme}\) 及 Key derivation function">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LTE NAS 金鑰計算">
+<meta property="og:url" content="https://frankchang.me/2020/03/19/lte-knas-derivation/index.html">
+<meta property="og:site_name" content="&#x2F;home&#x2F;frank">
+<meta property="og:description" content="最近在實做 LTE 網路 Attach 流程 Non-access Stratum (NAS) 層加密及 MAC 值計算時，重新看了一次 \(K_{NASint}\) 與 \(K_{NASenc}\) 的計算方式，因此寫一篇文章紀錄以供日後參考。 計算 \(K_{NASint}\) 與 \(K_{NASenc}\) 需要 \(K_{asme}\) 及 Key derivation function">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://frankchang.me/images/loading.gif">
+<meta property="article:published_time" content="2020-03-19T08:40:59.000Z">
+<meta property="article:modified_time" content="2020-03-20T06:12:42.265Z">
+<meta property="article:author" content="Frank Chang">
+<meta property="article:tag" content="LTE">
+<meta property="article:tag" content="NAS">
+<meta property="article:tag" content="AKA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://frankchang.me/images/loading.gif">
+
+<link rel="canonical" href="https://frankchang.me/2020/03/19/lte-knas-derivation/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>LTE NAS 金鑰計算 | /home/frank</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">/home/frank</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/aboutme/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>網站地圖</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://frankchang.me/2020/03/19/lte-knas-derivation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Frank Chang">
+      <meta itemprop="description" content="home directory of frank">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="/home/frank">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LTE NAS 金鑰計算
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-03-19 16:40:59" itemprop="dateCreated datePublished" datetime="2020-03-19T16:40:59+08:00">2020-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-03-20 14:12:42" itemprop="dateModified" datetime="2020-03-20T14:12:42+08:00">2020-03-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LTE/" itemprop="url" rel="index"><span itemprop="name">LTE</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>1 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最近在實做 LTE 網路 Attach 流程 Non-access Stratum (NAS) 層加密及 MAC 值計算時，重新看了一次 <span class="math inline">\(K_{NASint}\)</span> 與 <span class="math inline">\(K_{NASenc}\)</span> 的計算方式，因此寫一篇文章紀錄以供日後參考。</p>
+<p>計算 <span class="math inline">\(K_{NASint}\)</span> 與 <span class="math inline">\(K_{NASenc}\)</span> 需要 <span class="math inline">\(K_{asme}\)</span> 及 Key derivation function (<span class="math inline">\(KDF\)</span>)。 <span class="math inline">\(K_{asme}\)</span> 可以透過 LTE 鑒權的流程取得。</p>
+<a id="more"></a>
+<figure>
+<img src="/images/loading.gif" data-original="key_hier.png" alt="" /><figcaption>EPS Key Hierarchy from TS 33.401 V15.10.0 6.2</figcaption>
+</figure>
+<h1 id="generic-kdf">Generic KDF</h1>
+<p><span class="math inline">\(KDF\)</span>[1] 的定義如下: <span class="math display">\[
+KDF = HMAC-SHA256(K_{asme}, S)
+\]</span></p>
+<p>可以看到它需要的兩個參數為 <span class="math inline">\(K_{asme}\)</span> 及字串 <span class="math inline">\(S\)</span>[1]，其中 <span class="math inline">\(S\)</span> 的定義如下： <span class="math display">\[
+S = FC || P_{0} || L_{0} || P_{1} || L_{1} ... P_{n} || L_{n}
+\]</span></p>
+<p><span class="math inline">\(FC\)</span> 用於區別演算法的使用時機，<span class="math inline">\(P_{n}\)</span> 代表輸入的參數，在此會用到的有兩個參數 <span class="math inline">\(P_{0}\)</span> 與 <span class="math inline">\(P_{1}\)</span>，分別為演算法的類別及演算法的編號，<span class="math inline">\(L_{n}\)</span> 代表著參數的長度，以兩個 byte 來表示，採用 big-endian 格式。</p>
+<h2 id="參數-p_0">參數 <span class="math inline">\(P_{0}\)</span></h2>
+<p>參數 <span class="math inline">\(P_{0}\)</span> 為演算法的類別，長度為 1 byte，具體參數參閱下表[3]：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Algorithm distinguisher</th>
+<th style="text-align: center;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">NAS-enc-alg</td>
+<td style="text-align: center;">0x01</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">NAS-int-alg</td>
+<td style="text-align: center;">0x02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">RRC-enc-alg</td>
+<td style="text-align: center;">0x03</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">RRC-enc-alg</td>
+<td style="text-align: center;">0x04</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">UP-enc-alg</td>
+<td style="text-align: center;">0x05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">UP-enc-alg</td>
+<td style="text-align: center;">0x06</td>
+</tr>
+</tbody>
+</table>
+<h2 id="參數-p_1">參數 <span class="math inline">\(P_{1}\)</span></h2>
+<p>參數 <span class="math inline">\(P_{1}\)</span> 為演算法的編號，長度為 1 byte，具體參數請參閱下表[4]:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Algorithm identifier</th>
+<th style="text-align: center;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">EEA0</td>
+<td style="text-align: center;">0x0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">128-EEA1</td>
+<td style="text-align: center;">0x1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">128-EEA2</td>
+<td style="text-align: center;">0x2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">128-EEA3</td>
+<td style="text-align: center;">0x3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">EIA0</td>
+<td style="text-align: center;">0x0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">128-EIA1</td>
+<td style="text-align: center;">0x1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">128-EIA2</td>
+<td style="text-align: center;">0x2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">128-EIA3</td>
+<td style="text-align: center;">0x3</td>
+</tr>
+</tbody>
+</table>
+<h1 id="k_nasint-與-k_nasenc"><span class="math inline">\(K_{NASint}\)</span> 與 <span class="math inline">\(K_{NASenc}\)</span></h1>
+<p>計算 <span class="math inline">\(K_{NASint}\)</span> 於 <span class="math inline">\(K_{NASenc}\)</span> 時要將 <span class="math inline">\(FC\)</span> 設為 <span class="math inline">\(0x15\)</span>，因此兩個 <span class="math inline">\(S\)</span> 值分別為：</p>
+<p><span class="math inline">\(EIA1\)</span> 的 <span class="math inline">\(K_{NASint}\)</span>：<span class="math inline">\(S = 0x15 || NAS-int-alg || 0x0001 || EIA1 || 0x0001\)</span></p>
+<p><span class="math inline">\(EEA1\)</span> 的 <span class="math inline">\(K_{NASenc}\)</span>：<span class="math inline">\(S = 0x15 || NAS-enc-alg || 0x0001 || EEA1 || 0x0001\)</span></p>
+<p>得到 <span class="math inline">\(S\)</span> 值後再用 <span class="math inline">\(KDF\)</span> 算出 256-bit 長度的 HMAC，<strong>注意因為 LTE 使用的金鑰長度為 128-bit，故最後只取尾巴的 128-bit 作為 Key</strong></p>
+<h1 id="references">References</h1>
+<ol type="1">
+<li><a href="https://www.etsi.org/deliver/etsi_ts/133200_133299/133220/15.04.00_60/ts_133220v150400p.pdf" target="_blank" rel="noopener">TS 33.220 V15.4.0 B.2</a></li>
+<li><a href="https://www.etsi.org/deliver/etsi_ts/133400_133499/133401/15.10.00_60/ts_133401v151000p.pdf" target="_blank" rel="noopener">TS 33.401 V15.10.0 A.2</a></li>
+<li><a href="https://www.etsi.org/deliver/etsi_ts/133400_133499/133401/15.10.00_60/ts_133401v151000p.pdf" target="_blank" rel="noopener">TS 33.401 V15.10.0 Table A.7-1</a></li>
+<li><a href="https://www.etsi.org/deliver/etsi_ts/133400_133499/133401/15.10.00_60/ts_133401v151000p.pdf" target="_blank" rel="noopener">TS 33.401 V15.10.0 5.1.3.2/5.1.4.2</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LTE/" rel="tag"># LTE</a>
+              <a href="/tags/NAS/" rel="tag"># NAS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/12/27/nginx-log-regex/" rel="prev" title="Nginx Log 正規表達式">
+      <i class="fa fa-chevron-left"></i> Nginx Log 正規表達式
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#generic-kdf"><span class="nav-number">1.</span> <span class="nav-text">Generic KDF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#參數-p_0"><span class="nav-number">1.1.</span> <span class="nav-text">參數 \(P_{0}\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參數-p_1"><span class="nav-number">1.2.</span> <span class="nav-text">參數 \(P_{1}\)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#k_nasint-與-k_nasenc"><span class="nav-number">2.</span> <span class="nav-text">\(K_{NASint}\) 與 \(K_{NASenc}\)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Frank Chang</p>
+  <div class="site-description" itemprop="description">home directory of frank</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/frankurcrazy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;frankurcrazy" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/_frank_chang_" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_frank_chang_" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Chang</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="總字數">21k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">19 分鐘</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
+</html>

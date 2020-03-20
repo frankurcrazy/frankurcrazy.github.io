@@ -1,80 +1,51 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next muse use-motion" lang="zh-TW">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '7.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    search: {
-      root: '/',
-      path: ''
-    },
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '複製',
-      copy_success: '複製成功',
-      copy_failure: '複製失敗'
-    }
-  };
-</script>
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"frankchang.me","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false,"padding":18},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"save":"auto","color":"#222"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="透過 DNS-over-HTTPS 實現 DNS Request 加密，Mozilla 對此提出新標準">
-<meta name="keywords" content="dns,https,security,doh,dns-over-https">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DNS-over-HTTPS">
 <meta property="og:url" content="https://frankchang.me/2018/04/02/DNS-over-HTTPS/index.html">
 <meta property="og:site_name" content="&#x2F;home&#x2F;frank">
 <meta property="og:description" content="透過 DNS-over-HTTPS 實現 DNS Request 加密，Mozilla 對此提出新標準">
-<meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2019-08-22T05:40:27.317Z">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2018-04-02T00:35:22.000Z">
+<meta property="article:modified_time" content="2019-08-22T05:40:27.317Z">
+<meta property="article:author" content="Frank Chang">
+<meta property="article:tag" content="dns">
+<meta property="article:tag" content="https">
+<meta property="article:tag" content="security">
+<meta property="article:tag" content="doh">
+<meta property="article:tag" content="dns-over-https">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DNS-over-HTTPS">
-<meta name="twitter:description" content="透過 DNS-over-HTTPS 實現 DNS Request 加密，Mozilla 對此提出新標準">
-  <link rel="canonical" href="https://frankchang.me/2018/04/02/DNS-over-HTTPS/">
+
+<link rel="canonical" href="https://frankchang.me/2018/04/02/DNS-over-HTTPS/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true
   };
 </script>
 
@@ -86,11 +57,8 @@
 
 
 
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -99,9 +67,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -111,20 +78,27 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">/home/frank</span>
@@ -133,185 +107,121 @@
     </div>
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切換導航欄">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
-
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-      
-    
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首頁</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-      
-    
+        <li class="menu-item menu-item-about">
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>歸檔</a>
+    <a href="/aboutme/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-      
-    
+        <li class="menu-item menu-item-tags">
 
-    <a href="/aboutme/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>關於</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-      
-    
+        <li class="menu-item menu-item-categories">
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>標籤</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-      
-    
+        <li class="menu-item menu-item-archives">
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分類</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-sitemap">
-      
-    
+        <li class="menu-item menu-item-sitemap">
 
-    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>網站地圖</a>
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>網站地圖</a>
 
   </li>
-    </ul>
-    
+  </ul>
 
 </nav>
-
 </div>
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://frankchang.me/2018/04/02/DNS-over-HTTPS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Frank Chang">
       <meta itemprop="description" content="home directory of frank">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="/home/frank">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">DNS-over-HTTPS
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          DNS-over-HTTPS
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2018-04-02 08:35:22" itemprop="dateCreated datePublished" datetime="2018-04-02T08:35:22+08:00">2018-04-02</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
+                <span class="post-meta-item-text">更新於</span>
                 <time title="修改時間：2019-08-22 13:40:27" itemprop="dateModified" datetime="2019-08-22T13:40:27+08:00">2019-08-22</time>
               </span>
-            
-          
 
           <br>
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">文章字數：</span>
-              
-              <span title="文章字數">658</span>
+              <span>598</span>
             </span>
-          
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              
-              <span title="所需閱讀時間">1 分鐘</span>
+              <span>1 分鐘</span>
             </span>
-          
             <div class="post-description">透過 DNS-over-HTTPS 實現 DNS Request 加密，Mozilla 對此提出新標準</div>
-          
 
         </div>
       </header>
@@ -322,16 +232,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Let’s encrypt 的免費憑證促成 HTTPS 快速普及，大部分的網頁流量都已經加密，雖然中間人無法直接得知其他人看過那些內容，但是仍然能夠透過窺探 DNS 封包來得知哪台電腦上過哪些網站，甚至能夠變造其內容導致 DNS hijacking/spoofing 等等攻擊的發生。先前所經常使用的技術像是 <a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions" title="Wikipedia: DNSSEC" target="_blank" rel="noopener">DNSSEC</a> 雖然能有效避免 spoofing 攻擊，但卻無法避免 DNS request 被偷看。為了解決這個問題，有人就提出了 <a href="https://tools.ietf.org/html/draft-ietf-doh-dns-over-https-02" title="IETF Draft DNS-over-HTTPS" target="_blank" rel="noopener">DNS-over-HTTPS</a>，也就是利用 HTTPS 協定來達成 DNS request / reply。而 Firefox 也將在接下來的 Nightly 版本中提供這樣的功能測試。</p>
-<a id="more"></a>
-<p>目前 DoH (DNS-over-HTTPS) 並沒有確定的標準，因此各家實作不同，從 Mozilla 所提出的<a href="https://tools.ietf.org/html/draft-ietf-doh-dns-over-https-02" title="IETF Draft DNS-over-HTTPS" target="_blank" rel="noopener">標準</a>來看，DoH 將會沿用 <a href="https://www.ietf.org/rfc/rfc1035.txt" title="RFC 1035: DNS Wireformat" target="_blank" rel="noopener">DNS Wireformat</a>。目前有支援這個標準的 DNS resolver 並不多，<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/wireformat/" title="Cloudflare Public DNS: DNS-over-HTTPS (DNS Wireformat)" target="_blank" rel="noopener">Cloudflare</a> 是其中之一。除了 DNS Wireformat 以外，<a href="https://developers.google.com/speed/public-dns/docs/dns-over-https" title="Google Public DNS: DNS-over-HTTPS" target="_blank" rel="noopener">Google Public DNS</a> 與 <a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/json-format/" title="Cloudflare Public DNS: DNS-over-HTTPS (JSON)" target="_blank" rel="noopener">Cloudflare</a> 也另外支援 JSON 格式的 DoH。</p>
-<p>除了 Firefox Nightly 以外，還有一些 DoH Client，這類的 Client 擔任 Proxy 角色，接收一般的 DNS request 再透過 DoH 取得資料:</p>
-<ul>
-<li><a href="https://facebookexperimental.github.io/doh-proxy/" target="_blank" rel="noopener">doh-proxy</a></li>
-<li><a href="https://github.com/jedisct1/dnscrypt-proxy" target="_blank" rel="noopener">dnscrypt-proxy</a></li>
-<li><a href="https://github.com/aarond10/https_dns_proxy" target="_blank" rel="noopener">https_dns_proxy</a></li>
-<li><a href="https://github.com/m13253/dns-over-https" target="_blank" rel="noopener">dns-over-https</a></li>
-</ul>
+        <p>Let's encrypt 的免費憑證促成 HTTPS 快速普及，大部分的網頁流量都已經加密，雖然中間人無法直接得知其他人看過那些內容，但是仍然能夠透過窺探 DNS 封包來得知哪台電腦上過哪些網站，甚至能夠變造其內容導致 DNS hijacking/spoofing 等等攻擊的發生。先前所經常使用的技術像是 <a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions" target="_blank" rel="noopener" title="Wikipedia: DNSSEC">DNSSEC</a> 雖然能有效避免 spoofing 攻擊，但卻無法避免 DNS request 被偷看。為了解決這個問題，有人就提出了 <a href="https://tools.ietf.org/html/draft-ietf-doh-dns-over-https-02" target="_blank" rel="noopener" title="IETF Draft DNS-over-HTTPS">DNS-over-HTTPS</a>，也就是利用 HTTPS 協定來達成 DNS request / reply。而 Firefox 也將在接下來的 Nightly 版本中提供這樣的功能測試。 <a id="more"></a> 目前 DoH (DNS-over-HTTPS) 並沒有確定的標準，因此各家實作不同，從 Mozilla 所提出的<a href="https://tools.ietf.org/html/draft-ietf-doh-dns-over-https-02" target="_blank" rel="noopener" title="IETF Draft DNS-over-HTTPS">標準</a>來看，DoH 將會沿用 <a href="https://www.ietf.org/rfc/rfc1035.txt" target="_blank" rel="noopener" title="RFC 1035: DNS Wireformat">DNS Wireformat</a>。目前有支援這個標準的 DNS resolver 並不多，<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/wireformat/" target="_blank" rel="noopener" title="Cloudflare Public DNS: DNS-over-HTTPS (DNS Wireformat)">Cloudflare</a> 是其中之一。除了 DNS Wireformat 以外，<a href="https://developers.google.com/speed/public-dns/docs/dns-over-https" target="_blank" rel="noopener" title="Google Public DNS: DNS-over-HTTPS">Google Public DNS</a> 與 <a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/json-format/" target="_blank" rel="noopener" title="Cloudflare Public DNS: DNS-over-HTTPS (JSON)">Cloudflare</a> 也另外支援 JSON 格式的 DoH。</p>
+<p>除了 Firefox Nightly 以外，還有一些 DoH Client，這類的 Client 擔任 Proxy 角色，接收一般的 DNS request 再透過 DoH 取得資料: - <a href="https://facebookexperimental.github.io/doh-proxy/" target="_blank" rel="noopener">doh-proxy</a> - <a href="https://github.com/jedisct1/dnscrypt-proxy" target="_blank" rel="noopener">dnscrypt-proxy</a> - <a href="https://github.com/aarond10/https_dns_proxy" target="_blank" rel="noopener">https_dns_proxy</a> - <a href="https://github.com/m13253/dns-over-https" target="_blank" rel="noopener">dns-over-https</a></p>
 
     </div>
 
@@ -339,274 +241,128 @@
     
     
 
-    <footer class="post-footer">
-          
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/dns/" rel="tag"># dns</a>
+              <a href="/tags/https/" rel="tag"># https</a>
+              <a href="/tags/security/" rel="tag"># security</a>
+              <a href="/tags/doh/" rel="tag"># doh</a>
+          </div>
+
         
-        <div class="post-tags">
-            <a href="/tags/dns/" rel="tag"># dns</a>
-          
-            <a href="/tags/https/" rel="tag"># https</a>
-          
-            <a href="/tags/security/" rel="tag"># security</a>
-          
-            <a href="/tags/doh/" rel="tag"># doh</a>
-          
-        </div>
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-              <a href="/2018/03/09/freebsd-nginx-full/" rel="next" title="FreeBSD 安裝 Nginx full 錯誤處理">
-                <i class="fa fa-chevron-left"></i> FreeBSD 安裝 Nginx full 錯誤處理
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-              <a href="/2018/04/16/591-housing-api/" rel="prev" title="591 租屋資料 API">
-                591 租屋資料 API <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-  </div>
 
 
-          </div>
-          
-
-
-        </div>
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/03/09/freebsd-nginx-full/" rel="prev" title="FreeBSD 安裝 Nginx full 錯誤處理">
+      <i class="fa fa-chevron-left"></i> FreeBSD 安裝 Nginx full 錯誤處理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/04/16/591-housing-api/" rel="next" title="591 租屋資料 API">
+      591 租屋資料 API <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
 
-  <aside id="sidebar" class="sidebar">
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
 
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">Frank Chang</p>
-  <div class="site-description motion-element" itemprop="description">home directory of frank</div>
+  <div class="site-description" itemprop="description">home directory of frank</div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-categories">
-        
-          
             <a href="/categories/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">12</span>
-        <span class="site-state-item-name">分類</span>
-        </a>
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分類</span></a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/tags/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">標籤</span>
-        </a>
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">標籤</span></a>
       </div>
-    
   </nav>
+</div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/frankurcrazy" title="GitHub &rarr; https://github.com/frankurcrazy" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/frankurcrazy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;frankurcrazy" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
-    
       <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://twitter.com/_frank_chang_" title="Twitter &rarr; https://twitter.com/_frank_chang_" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+        <a href="https://twitter.com/_frank_chang_" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_frank_chang_" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
       </span>
-    
   </div>
 
 
 
-        </div>
       </div>
 
     </div>
@@ -617,10 +373,15 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Frank Chang</span>
@@ -628,16 +389,18 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="總字數">23k</span>
+    <span title="總字數">21k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">20 分鐘</span>
+    <span title="所需總閱讀時間">19 分鐘</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v3.9.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.2.0
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主題 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.3.0</div>
+  <div class="theme-info">主題 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.2
+  </div>
 
         
 
@@ -648,42 +411,26 @@
 
 
 
-        
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-  <script src="/js/utils.js?v=7.3.0"></script>
-  <script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/utils.js"></script>
 
-  
-  <script src="/js/schemes/muse.js?v=7.3.0"></script>
+<script src="/js/motion.js"></script>
 
 
-  
-  <script src="/js/scrollspy.js?v=7.3.0"></script>
-<script src="/js/post-details.js?v=7.3.0"></script>
+<script src="/js/schemes/muse.js"></script>
 
 
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-  <script src="/js/next-boot.js?v=7.3.0"></script>
 
-  
-
-  
-
-  
 
 
   
@@ -702,26 +449,11 @@
 
 
 
+  
 
+  
 
+  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
 </html>
