@@ -28,7 +28,7 @@
 <meta property="og:description" content="如果有人想要買網管型 Switch，跑來問我該買哪一台比較適合，我一定唯一推薦買二手 Cisco Switch，不但功能多、穩定，而且最重要的，價格非常的實惠。以目前在沒屋頂的售價來說，一台 48 port 1Gbps C2960 只要 3000 元以內就搞定，你想要的 dhcp snooping, mac binding, vlan 一應俱全。如果你想要找基本的 L3 Switch，可以找看看">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2018-02-08T06:30:34.000Z">
-<meta property="article:modified_time" content="2019-08-22T09:42:20.855Z">
+<meta property="article:modified_time" content="2020-03-24T04:02:32.242Z">
 <meta property="article:author" content="Frank Chang">
 <meta property="article:tag" content="sfp">
 <meta property="article:tag" content="sfp+">
@@ -213,7 +213,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2019-08-22 17:42:20" itemprop="dateModified" datetime="2019-08-22T17:42:20+08:00">2019-08-22</time>
+                <time title="修改時間：2020-03-24 12:02:32" itemprop="dateModified" datetime="2020-03-24T12:02:32+08:00">2020-03-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,7 +231,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>910</span>
+              <span>913</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -252,8 +252,16 @@
       
         <p>如果有人想要買網管型 Switch，跑來問我該買哪一台比較適合，我一定唯一推薦買二手 Cisco Switch，不但功能多、穩定，而且最重要的，價格非常的實惠。以目前在沒屋頂的售價來說，一台 48 port 1Gbps C2960 只要 3000 元以內就搞定，你想要的 dhcp snooping, mac binding, vlan 一應俱全。如果你想要找基本的 L3 Switch，可以找看看 C3560e，帶兩個 10G X2 接口 (可以轉成 TwinGig 接四個 1G SFP)，價格約落在 4000 以內就有了，還支援 PoE。如果需要比較完整的 L3 功能可以考慮 C3560G/C3750G。目前全新的 D-Link 或是 TP-Link 用這樣的價格都買不到，而且界面也不好用。</p>
 <p>但是使用 Cisco 的設備會遇到一個麻煩，就是它會鎖 Mini-GBIC vendor code；因此如果插上第三方的 SFP/SFP+，該 port 就會直接進入 err-disabled 的狀態，完全無法使用。一般的作法是請對方燒 ID (掏寶上的廠商多半會配合)，另一種更簡單的方法就是直接在交換器上關閉這個檢查。 <a id="more"></a></p>
-<p>插上第三方的 SFP 會出現的訊息:<code>Feb  8 04:58:18.482: %GBIC_SECURITY_CRYPT-4-VN_DATA_CRC_ERROR: GBIC in port Gi0/52 has bad crc Feb  8 04:58:18.482: %PM-4-ERR_DISABLE: gbic-invalid error detected on Gi0/52, putting Gi0/52 in err-disable state <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">關閉這個檢查步驟很簡單，只需要透過兩個指令</span><br></pre></td></tr></table></figure> # service unsupported-transceiver <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">這是一個隱藏指令，所以不會自動補齊，打完會噴出一個如果因為使用第三方 bla bla，我們不負責 bla bla...，接著再下</span><br></pre></td></tr></table></figure> # no errdisable detect cause gbic-invalid</code> 到這邊你就可以放心使用你的雜牌 SFP 啦！</p>
-<p>參考資料： 1. <a href="https://info.hummingbirdnetworks.com/blog/forcing-cisco-switches-to-use-3rd-party-sfp" target="_blank" rel="noopener">Forcing Cisco Switches To Use 3rd-party SFP</a> 2. <a href="https://info.hummingbirdnetworks.com/blog/cisco-unsupported-transceiver-error" target="_blank" rel="noopener">Cisco Unsupported Transceiver Error</a></p>
+<p>插上第三方的 SFP 會出現的訊息:```</p>
+<blockquote>
+<p>Feb 8 04:58:18.482: %GBIC_SECURITY_CRYPT-4-VN_DATA_CRC_ERROR: GBIC in port Gi0/52 has bad crc Feb 8 04:58:18.482: %PM-4-ERR_DISABLE: gbic-invalid error detected on Gi0/52, putting Gi0/52 in err-disable state <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">關閉這個檢查步驟很簡單，只需要透過兩個指令</span><br></pre></td></tr></table></figure> # service unsupported-transceiver <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">這是一個隱藏指令，所以不會自動補齊，打完會噴出一個如果因為使用第三方 bla bla，我們不負責 bla bla...，接著再下</span><br></pre></td></tr></table></figure> # no errdisable detect cause gbic-invalid ```</p>
+</blockquote>
+<p>到這邊你就可以放心使用你的雜牌 SFP 啦！</p>
+<p>參考資料:</p>
+<ol type="1">
+<li><a href="https://info.hummingbirdnetworks.com/blog/forcing-cisco-switches-to-use-3rd-party-sfp" target="_blank" rel="noopener">Forcing Cisco Switches To Use 3rd-party SFP</a></li>
+<li><a href="https://info.hummingbirdnetworks.com/blog/cisco-unsupported-transceiver-error" target="_blank" rel="noopener">Cisco Unsupported Transceiver Error</a></li>
+</ol>
 
     </div>
 

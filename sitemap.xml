@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://frankchang.me/2018/02/08/cisco-unsupported-transceiver/</loc>
+    
+    <lastmod>2020-03-24T04:02:32.242Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://frankchang.me/2020/03/19/lte-knas-derivation/</loc>
     
     <lastmod>2020-03-20T06:17:34.087Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://frankchang.me/2018/04/16/591-housing-api/</loc>
     
     <lastmod>2019-08-22T09:42:47.699Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://frankchang.me/2018/02/08/cisco-unsupported-transceiver/</loc>
-    
-    <lastmod>2019-08-22T09:42:20.855Z</lastmod>
     
   </url>
   
