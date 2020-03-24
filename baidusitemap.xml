@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://frankchang.me/2018/12/18/sim7000c/</loc>
+    <lastmod>2020-03-24</lastmod>
+  </url>  <url>
     <loc>https://frankchang.me/2018/02/08/cisco-unsupported-transceiver/</loc>
     <lastmod>2020-03-24</lastmod>
   </url>  <url>
@@ -8,9 +11,6 @@
     <lastmod>2020-03-20</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2018/07/27/tcp-fastopen/</loc>
-    <lastmod>2019-08-22</lastmod>
-  </url>  <url>
-    <loc>https://frankchang.me/2018/12/18/sim7000c/</loc>
     <lastmod>2019-08-22</lastmod>
   </url>  <url>
     <loc>https://frankchang.me/2018/04/16/591-housing-api/</loc>
