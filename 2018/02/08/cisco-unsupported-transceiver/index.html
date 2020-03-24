@@ -28,7 +28,7 @@
 <meta property="og:description" content="如果有人想要買網管型 Switch，跑來問我該買哪一台比較適合，我一定唯一推薦買二手 Cisco Switch，不但功能多、穩定，而且最重要的，價格非常的實惠。以目前在沒屋頂的售價來說，一台 48 port 1Gbps C2960 只要 3000 元以內就搞定，你想要的 dhcp snooping, mac binding, vlan 一應俱全。如果你想要找基本的 L3 Switch，可以找看看">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2018-02-08T06:30:34.000Z">
-<meta property="article:modified_time" content="2020-03-24T04:07:29.426Z">
+<meta property="article:modified_time" content="2020-03-24T04:09:51.262Z">
 <meta property="article:author" content="Frank Chang">
 <meta property="article:tag" content="sfp">
 <meta property="article:tag" content="sfp+">
@@ -213,7 +213,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-03-24 12:07:29" itemprop="dateModified" datetime="2020-03-24T12:07:29+08:00">2020-03-24</time>
+                <time title="修改時間：2020-03-24 12:09:51" itemprop="dateModified" datetime="2020-03-24T12:09:51+08:00">2020-03-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,7 +231,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>908</span>
+              <span>905</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -252,7 +252,7 @@
       
         <p>如果有人想要買網管型 Switch，跑來問我該買哪一台比較適合，我一定唯一推薦買二手 Cisco Switch，不但功能多、穩定，而且最重要的，價格非常的實惠。以目前在沒屋頂的售價來說，一台 48 port 1Gbps C2960 只要 3000 元以內就搞定，你想要的 dhcp snooping, mac binding, vlan 一應俱全。如果你想要找基本的 L3 Switch，可以找看看 C3560e，帶兩個 10G X2 接口 (可以轉成 TwinGig 接四個 1G SFP)，價格約落在 4000 以內就有了，還支援 PoE。如果需要比較完整的 L3 功能可以考慮 C3560G/C3750G。目前全新的 D-Link 或是 TP-Link 用這樣的價格都買不到，而且界面也不好用。</p>
 <p>但是使用 Cisco 的設備會遇到一個麻煩，就是它會鎖 Mini-GBIC vendor code；因此如果插上第三方的 SFP/SFP+，該 port 就會直接進入 err-disabled 的狀態，完全無法使用。一般的作法是請對方燒 ID (掏寶上的廠商多半會配合)，另一種更簡單的方法就是直接在交換器上關閉這個檢查。 <a id="more"></a></p>
-<p>插上第三方的 SFP 會出現的訊息:```</p>
+<p>插上第三方的 SFP 會出現的訊息:</p>
 <blockquote>
 <p>Feb 8 04:58:18.482: %GBIC_SECURITY_CRYPT-4-VN_DATA_CRC_ERROR: GBIC in port Gi0/52 has bad crc Feb 8 04:58:18.482: %PM-4-ERR_DISABLE: gbic-invalid error detected on Gi0/52, putting Gi0/52 in err-disable state</p>
 </blockquote>
@@ -460,7 +460,7 @@
 <script src="/js/schemes/muse.js"></script>
 
 
-<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/js/next-boot.js"></script>
 
 
 
@@ -487,5 +487,5 @@
 
   
 
-<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
+<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
